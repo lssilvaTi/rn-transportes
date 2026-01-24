@@ -1,0 +1,54 @@
+---
+import FAQSchema from '../seo/FAQSchema.astro';
+
+// FAQ Section
+const faqItems = [
+  {
+    question: 'What is included in the maintenance package?',
+    answer: 'Maintenance includes hosting, security updates, performance monitoring, and small content changes. It\'s included in both Starter and Business packages with a minimum 1-year contract.',
+  },
+  {
+    question: 'How long does it take to complete a project?',
+    answer: 'Timeline varies based on the plan and project scope. Typically, Starter projects take 1-2 weeks, while Business projects take 2-4 weeks. We\'ll provide a detailed timeline after reviewing your requirements.',
+  },
+  {
+    question: 'Can I upgrade my plan later?',
+    answer: 'Yes, you can upgrade from Starter to Business at any time. We\'ll adjust pricing accordingly and ensure a smooth transition.',
+  },
+  {
+    question: 'Do you provide SEO optimization?',
+    answer: 'Basic SEO optimization is included in the Business package. This includes meta tags, structured data, sitemap, and performance optimization. Advanced SEO services can be discussed separately.',
+  },
+  {
+    question: 'What payment methods do you accept?',
+    answer: 'We use Stripe for secure payments. You\'ll receive a payment link via email after we review and confirm your project scope.',
+  },
+  {
+    question: 'What happens after I submit the form?',
+    answer: 'We\'ll review your project requirements within 24 hours and send you a confirmation email with the final scope, timeline, and payment link. Once payment is confirmed, your project begins.',
+  },
+];
+---
+
+<FAQSchema questions={faqItems} />
+
+<section id="faq" class="py-20 bg-[var(--color-background-dark)]">
+  <div class="container mx-auto px-6 max-w-3xl">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-[var(--color-platinum)]">
+      Frequently Asked Questions
+    </h2>
+    <div class="space-y-4">
+      {faqItems.map((item) => (
+        <details class="bg-[var(--color-background-dark)] rounded-lg border border-[var(--color-platinum)]/10 group">
+          <summary class="p-6 cursor-pointer list-none flex items-center justify-between text-[var(--color-platinum)] font-semibold hover:text-[var(--color-bondi-blue)] transition-colors">
+            <span>{item.question}</span>
+            <i class="fas fa-chevron-down text-sm transition-transform group-open:rotate-180"></i>
+          </summary>
+          <div class="px-6 pb-6 text-[var(--color-platinum)]/70">
+            {item.answer}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

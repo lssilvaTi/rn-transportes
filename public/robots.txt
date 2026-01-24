@@ -1,0 +1,10 @@
+# robots.txt for Axory Studio
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://axory.dev/sitemap.xml
+
+# Disallow admin or private areas if any
+# Disallow: /admin/
+# Disallow: /private/

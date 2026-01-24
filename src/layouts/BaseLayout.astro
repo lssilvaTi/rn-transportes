@@ -1,0 +1,136 @@
+---
+import '../styles/global.css';
+import '@fortawesome/fontawesome-free/css/all.css';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import WhatsAppButton from '../components/layout/WhatsAppButton.astro';
+import SEOHead from '../components/seo/SEOHead.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  url?: string;
+  type?: string;
+  keywords?: string;
+  canonical?: string;
+  noindex?: boolean;
+}
+
+const { 
+  title, 
+  description = 'Premium web development studio specializing in custom websites. We craft sophisticated, high-performance websites that reflect your brand\'s excellence.',
+  image,
+  url,
+  type,
+  keywords,
+  canonical,
+  noindex = false
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <SEOHead 
+      title={title}
+      description={description}
+      image={image}
+      url={url}
+      type={type}
+      keywords={keywords}
+      canonical={canonical}
+      noindex={noindex}
+    />
+    <meta name="generator" content={Astro.generator} />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600&family=Inter:wght@400&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <WhatsAppButton />
+  </body>
+</html>
+
+<style is:global>
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+  }
+  
+  main {
+    display: block;
+    min-height: 0;
+  }
+
+  /* Animações de entrada (fade in up) */
+  .fade-in-element {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Delay progressivo para múltiplos elementos */
+  .fade-in-element:nth-child(1) { transition-delay: 0.1s; }
+  .fade-in-element:nth-child(2) { transition-delay: 0.2s; }
+  .fade-in-element:nth-child(3) { transition-delay: 0.3s; }
+  .fade-in-element:nth-child(4) { transition-delay: 0.4s; }
+  .fade-in-element:nth-child(5) { transition-delay: 0.5s; }
+  .fade-in-element:nth-child(6) { transition-delay: 0.6s; }
+</style>
+
+<script>
+  // Theme management - versão sutil
+  (function() {
+    function getThemePreference() {
+      const saved = localStorage.getItem('theme');
+      if (saved) return saved;
+      
+      if (window.matchMedia?.('(prefers-color-scheme: light)').matches) {
+        return 'light';
+      }
+      return 'dark';
+    }
+
+    document.documentElement.setAttribute('data-theme', getThemePreference());
+  })();
+
+  // Intersection Observer para animações de entrada (fade in up)
+  document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const fadeInObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in-visible');
+          fadeInObserver.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Elementos que devem ter animação fade in up
+    const animateElements = document.querySelectorAll(
+      'section > *:not(header), .service-card, .pricing-card, .portfolio-item, .testimonial, .faq-item, .process-step, .stat-item'
+    );
+
+    animateElements.forEach(el => {
+      const element = el as HTMLElement;
+      element.classList.add('fade-in-element');
+      fadeInObserver.observe(element);
+    });
+  });
+</script>

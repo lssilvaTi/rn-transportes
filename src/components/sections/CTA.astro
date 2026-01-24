@@ -1,0 +1,25 @@
+---
+import Button from '../ui/Button.astro';
+---
+
+<section id="contact" class="py-20 bg-gradient-to-br from-[var(--color-indigo-velvet)]/20 via-[var(--color-background)] to-[var(--color-bondi-blue)]/20">
+  <div class="container mx-auto px-6 text-center">
+    <h2 class="text-4xl md:text-5xl font-bold mb-6 text-[var(--color-platinum)]">
+      Ready to Start Your Project?
+    </h2>
+    <p class="text-xl text-[var(--color-platinum)]/80 mb-8 max-w-2xl mx-auto">
+      Let's bring your vision to life with a premium website that reflects your brand's excellence.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <Button href="/form" variant="primary" size="lg">
+        Get Started Now
+      </Button>
+      <Button href="#pricing" variant="outline" size="lg">
+        View Pricing
+      </Button>
+    </div>
+    <p class="mt-8 text-[var(--color-platinum)]/60 text-sm">
+      Or contact us directly via <a href="https://wa.me/5531996257466" target="_blank" class="text-[var(--color-bondi-blue)] hover:underline">WhatsApp</a>
+    </p>
+  </div>
+</section>

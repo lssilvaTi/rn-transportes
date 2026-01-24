@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/sections/Hero.astro';
+import ValueProposition from '../components/sections/ValueProposition.astro';
+import Services from '../components/sections/Services.astro';
+import Pricing from '../components/sections/Pricing.astro';
+import Process from '../components/sections/Process.astro';
+import Portfolio from '../components/sections/Portfolio.astro';
+import Testimonials from '../components/sections/Testimonials.astro';
+import FAQ from '../components/sections/FAQ.astro';
+import CTA from '../components/sections/CTA.astro';
+---
+
+<BaseLayout 
+  title="Axory Studio - Premium Web Development | Custom Websites"
+  description="Premium web development studio specializing in custom websites. We craft sophisticated, high-performance websites that reflect your brand's excellence. Get started with our Starter or Business plans."
+  keywords="web development, custom websites, premium web design, responsive websites, SEO optimization, web development studio, Axory Studio, website design, web development services"
+  canonical="https://axory.dev"
+  image="/banner-og.png"
+  url="https://axory.dev"
+>
+  <Hero />
+  <ValueProposition />
+  <Services />
+  <Pricing />
+  <Process />
+  <Portfolio />
+  <Testimonials />
+  <FAQ />
+  <CTA />
+</BaseLayout>

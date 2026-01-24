@@ -1,0 +1,111 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  url?: string;
+  type?: string;
+  keywords?: string;
+  author?: string;
+  noindex?: boolean;
+  canonical?: string;
+}
+
+const {
+  title,
+  description,
+  image = '/banner-og.png',
+  url = 'https://axory.dev',
+  type = 'website',
+  keywords = 'web development, custom websites, premium web design, responsive websites, SEO optimization, web development studio, Axory Studio',
+  author = 'Axory Studio',
+  noindex = false,
+  canonical,
+} = Astro.props;
+
+const siteUrl = url;
+const pageUrl = canonical || siteUrl + Astro.url.pathname;
+const ogImage = image.startsWith('http') ? image : siteUrl + image;
+const ogImageWebP = ogImage.replace(/\.(png|jpg|jpeg)$/i, '.webp');
+---
+
+<!-- Primary Meta Tags -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
+<meta name="author" content={author} />
+<meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+<meta name="language" content="English" />
+<meta name="revisit-after" content="7 days" />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={pageUrl} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={pageUrl} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:secure_url" content={ogImage} />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Axory Studio - Premium Web Development" />
+<meta property="og:site_name" content="Axory Studio" />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={pageUrl} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+<meta name="twitter:image:alt" content="Axory Studio - Premium Web Development" />
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+<!-- Web App Manifest -->
+<link rel="manifest" href="/site.webmanifest" />
+
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Axory Studio",
+  "url": siteUrl,
+  "logo": siteUrl + "/assets/logos/logo-full-light.png",
+  "description": description,
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Sales",
+    "availableLanguage": ["English"]
+  },
+  "sameAs": [
+    // Add social media links here when available
+  ]
+})} />
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Axory Studio",
+  "url": siteUrl,
+  "description": description,
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": siteUrl + "/search?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+})} />

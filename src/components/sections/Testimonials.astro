@@ -1,0 +1,54 @@
+---
+// Testimonials Section
+const testimonials = [
+  {
+    name: 'Client Name',
+    company: 'Company Name',
+    text: 'Axory Studio delivered exactly what we needed. The attention to detail and quality is outstanding.',
+    rating: 5,
+  },
+  {
+    name: 'Client Name',
+    company: 'Company Name',
+    text: 'Professional, fast, and the final product exceeded our expectations. Highly recommended!',
+    rating: 5,
+  },
+  {
+    name: 'Client Name',
+    company: 'Company Name',
+    text: 'The team understood our vision and brought it to life beautifully. Great experience throughout.',
+    rating: 5,
+  },
+];
+---
+
+<section id="testimonials" class="py-20 bg-[var(--color-background)]">
+  <div class="container mx-auto px-6">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-[var(--color-platinum)]">
+      What Clients Say
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {testimonials.map((testimonial) => (
+        <div class="bg-[var(--color-background)] rounded-lg p-6 border border-[var(--color-platinum)]/10">
+          <div class="flex mb-4">
+            {[...Array(testimonial.rating)].map(() => (
+              <i class="fas fa-star text-[var(--color-bondi-blue)]"></i>
+            ))}
+          </div>
+          <p class="text-[var(--color-platinum)]/80 mb-6 italic">
+            &quot;{testimonial.text}&quot;
+          </p>
+          <div class="flex items-center">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--color-indigo-velvet)] to-[var(--color-bondi-blue)] flex items-center justify-center text-white font-semibold mr-4">
+              {testimonial.name.charAt(0)}
+            </div>
+            <div>
+              <p class="font-semibold text-[var(--color-platinum)]">{testimonial.name}</p>
+              <p class="text-sm text-[var(--color-platinum)]/60">{testimonial.company}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,23 @@
+---
+interface Props {
+  questions: Array<{
+    question: string;
+    answer: string;
+  }>;
+}
+
+const { questions } = Astro.props;
+---
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": questions.map((item) => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+})} />

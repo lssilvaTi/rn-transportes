@@ -1,0 +1,36 @@
+---
+// Portfolio Section
+const portfolioItems = [1, 2, 3, 4, 5, 6];
+---
+
+<section id="portfolio" class="py-20 bg-[var(--color-background-dark)]">
+  <div class="container mx-auto px-6">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-[var(--color-platinum)]">
+      Our Work
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {portfolioItems.map((item) => (
+        <div class="group bg-[var(--color-background-dark)] rounded-lg overflow-hidden border border-[var(--color-platinum)]/10 hover:border-[var(--color-indigo-velvet)]/50 transition-all cursor-pointer">
+          <div class="aspect-video bg-gradient-to-br from-[var(--color-indigo-velvet)]/20 to-[var(--color-bondi-blue)]/20 flex items-center justify-center">
+            <i class="fas fa-image text-4xl text-[var(--color-platinum)]/30 group-hover:text-[var(--color-platinum)]/50 transition-colors"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2 text-[var(--color-platinum)]">Project {item}</h3>
+            <p class="text-[var(--color-platinum)]/70 text-sm mb-4">
+              Premium website design and development
+            </p>
+            <div class="flex items-center text-[var(--color-bondi-blue)] text-sm font-medium">
+              <span>View Project</span>
+              <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    <div class="mt-12 text-center">
+      <p class="text-[var(--color-platinum)]/70">
+        More projects coming soon. <a href="#contact" class="text-[var(--color-bondi-blue)] hover:underline">Start your project</a> to be featured here.
+      </p>
+    </div>
+  </div>
+</section>
