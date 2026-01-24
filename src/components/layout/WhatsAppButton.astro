@@ -1,6 +1,6 @@
 ---
-const whatsappNumber = '5531996257466';
-const whatsappUrl = `https://wa.me/${whatsappNumber}`;
+import { CONTACT } from '../../utils/constants';
+const whatsappUrl = `https://wa.me/${CONTACT.whatsapp}`;
 ---
 
 <a 
@@ -19,7 +19,7 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}`;
     width: 60px;
     height: 60px;
     bottom: 30px;
-    left: 30px;
+    right: 30px;
     background: #25D366;
     color: white;
     border-radius: 50%;
@@ -61,7 +61,7 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}`;
       width: 50px;
       height: 50px;
       bottom: 20px;
-      left: 20px;
+      right: 20px;
     }
     .whatsapp-float i {
       font-size: 28px;

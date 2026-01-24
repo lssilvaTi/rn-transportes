@@ -1,41 +1,51 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand Colors */
-  --color-prussian-blue: #0F172A;
-  --color-ink-black: #020617;
-  --color-indigo-velvet: #4C1D95;
-  --color-bondi-blue: #0891B2;
-  --color-platinum: #E5E7EB;
+  /* RN Transportes - Paleta das imagens de referência */
+  --color-dark-blue: #1f3e8f;
+  --color-cyan: #00a7e0;
+  --color-yellow: #ffee00;
 
-  /* Color aliases for semantic usage */
-  --color-primary: var(--color-indigo-velvet);
-  --color-secondary: var(--color-bondi-blue);
+  /* Header e Footer - azul escuro fixo (sempre) */
+  --color-header-bg: #1f3e8f;
+
+  /* Aliases para componentes (mapeados à nova paleta) */
+  --color-indigo-velvet: #1f3e8f;
+  --color-bondi-blue: #00a7e0;
+  --color-prussian-blue: #0d1b36;
+  --color-ink-black: #0a1428;
+  --color-platinum: #e5e7eb;
+
+  --color-primary: var(--color-dark-blue);
+  --color-secondary: var(--color-cyan);
+  --color-accent: var(--color-yellow);
   --color-background: var(--color-prussian-blue);
   --color-background-dark: var(--color-ink-black);
   --color-surface: var(--color-platinum);
-  
-  /* Typography */
+
+  /* Typography - sans para visual de transportes/logística */
   --font-serif: 'Source Serif 4', serif;
   --font-sans: 'Inter', sans-serif;
-  
-  /* Font families for Tailwind */
   --font-family-serif: 'Source Serif 4', serif;
   --font-family-sans: 'Inter', sans-serif;
 }
 
-/* Light theme - versão clara baseada na paleta platinum */
+/* Tema claro - estilo da referência (fundo branco, limpo) */
 [data-theme="light"] {
-  /* Backgrounds claros baseados no platinum */
-  --color-background: #FFFFFF; /* Branco puro */
-  --color-background-dark: #F3F4F6; /* Cinza muito claro (próximo ao platinum) */
-  
-  /* Texto escuro para contraste */
-  --color-surface: #1F2937; /* Cinza escuro para texto principal */
-  --color-platinum: #1F2937; /* Texto escuro no tema light */
+  --color-background: #ffffff;
+  --color-background-dark: #f5f5f5;
+  --color-platinum: #1f2937;
+  --color-surface: #1f2937;
 }
 
-/* Base styles */
+/* Tema escuro */
+[data-theme="dark"] {
+  --color-background: #0d1b36;
+  --color-background-dark: #0a1428;
+  --color-platinum: #e5e7eb;
+  --color-surface: #e5e7eb;
+}
+
 :root {
   font-family: var(--font-sans);
 }
@@ -53,17 +63,17 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Typography hierarchy */
+/* Títulos - sans para visual mais industrial/transportes */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-serif);
-  font-weight: 600; /* SemiBold */
+  font-family: var(--font-sans);
+  font-weight: 700;
 }
 
 h4, h5, h6 {
-  font-weight: 500; /* Medium */
+  font-weight: 600;
 }
 
 body, p, span, a, button, input, textarea, select {
   font-family: var(--font-sans);
-  font-weight: 400; /* Regular */
+  font-weight: 400;
 }

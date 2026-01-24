@@ -4,20 +4,26 @@ interface Props {
   size?: 'sm' | 'md' | 'lg';
   href?: string;
   class?: string;
+  target?: string;
+  rel?: string;
+  type?: 'button' | 'submit';
 }
 
 const { 
   variant = 'primary', 
   size = 'md',
   href,
-  class: className = '' 
+  class: className = '',
+  target,
+  rel,
+  type = 'button'
 } = Astro.props;
 
 const baseClasses = 'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2';
 const variantClasses = {
-  primary: 'bg-[var(--color-indigo-velvet)] text-white hover:bg-[var(--color-indigo-velvet)]/90 focus:ring-[var(--color-indigo-velvet)]',
-  secondary: 'bg-[var(--color-bondi-blue)] text-white hover:bg-[var(--color-bondi-blue)]/90 focus:ring-[var(--color-bondi-blue)]',
-  outline: 'border-2 border-[var(--color-bondi-blue)] text-[var(--color-bondi-blue)] hover:bg-[var(--color-bondi-blue)]/10 focus:ring-[var(--color-bondi-blue)]',
+  primary: 'bg-[var(--color-dark-blue)] text-white hover:bg-[var(--color-dark-blue)]/90 focus:ring-[var(--color-dark-blue)]',
+  secondary: 'bg-[var(--color-cyan)] text-white hover:bg-[var(--color-cyan)]/90 focus:ring-[var(--color-cyan)]',
+  outline: 'border-2 border-[var(--color-cyan)] text-[var(--color-cyan)] hover:bg-[var(--color-cyan)]/10 focus:ring-[var(--color-cyan)]',
 };
 const sizeClasses = {
   sm: 'px-4 py-2 text-sm',
@@ -29,11 +35,11 @@ const buttonClasses = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[s
 ---
 
 {href ? (
-  <a href={href} class={buttonClasses}>
+  <a href={href} class={buttonClasses} target={target} rel={rel}>
     <slot />
   </a>
 ) : (
-  <button class={buttonClasses} type="button">
+  <button class={buttonClasses} type={type}>
     <slot />
   </button>
 )}

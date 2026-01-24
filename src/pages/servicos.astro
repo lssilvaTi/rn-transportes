@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+
+const servicos = [
+  {
+    id: 'residencial-comercial',
+    title: 'Mudanças Comerciais e Residenciais',
+    text: 'Somos especialistas em mudanças comerciais e residenciais! Nós sabemos o quanto é importante essa nova fase para você e/ou sua família. Por isso, conte conosco! Somos uma empresa especializada em mudanças, com tradição no mercado e nossos serviços são personalizados de acordo com a sua necessidade.',
+    image: '/assets/servicos/mudanca-residencial.png',
+    imageAlt: 'Mudança residencial com caixas e pertences',
+  },
+  {
+    id: 'aproveitamento',
+    title: 'Aproveitamento de Carga',
+    text: 'As mudanças por Aproveitamento de Carga seguem juntas por uma rota de atendimento da empresa. Neste tipo de sistema, as mudanças são enviadas para o nosso guarda-móveis após a retirada no endereço de origem e entregamos no destino dentro do prazo acordado. Realizamos um inventário detalhado dos bens a serem transportados para maior controle e transparência. A vantagem deste sistema é a possibilidade de uma redução no custo do transporte.',
+    image: '/assets/servicos/aproveitamento-de-carga.png',
+    imageAlt: 'Aproveitamento de carga',
+  },
+  {
+    id: 'transporte-veiculos',
+    title: 'Transporte de Veículos',
+    text: 'Ao realizar uma mudança pode surgir a preocupação de como levar o seu veículo. As estradas em sua maioria são mal sinalizadas e apresentam perigos para quem não costuma transitar por elas. Portanto, você pode contar com o nosso serviço de Transporte de Veículos, que leva o seu automóvel com total segurança até o destino final de sua mudança!',
+    image: '/assets/servicos/transporte-veiculos.png',
+    imageAlt: 'Transporte de veículos com carreta especializada',
+  },
+  {
+    id: 'interestadual',
+    title: 'Mudanças Interestaduais',
+    text: 'Nesse processo estão envolvidos diversos pontos extremamente importantes para o sucesso de sua mudança interestadual tais como: o planejamento da mudança, o manuseio e proteção de seus bens, o rastreamento, o seguro contra perdas e acidentes, o tempo de chegada e o mais importante à escolha correta de uma empresa de transporte.',
+    image: '/assets/servicos/mudanca-interestadual.png',
+    imageAlt: 'Mudança interestadual',
+  },
+];
+---
+
+<BaseLayout
+  title="Serviços | RN Transportes e Mudanças"
+  description="Mudanças residenciais, comerciais, interestaduais, aproveitamento de carga e transporte de veículos. Carga segurada pela Porto Seguro. Orçamento grátis em Belo Horizonte."
+  keywords="mudanças BH, mudanças residenciais, mudanças comerciais, mudanças interestaduais, aproveitamento de carga, transporte de veículos, RN Transportes, Porto Seguro"
+  canonical="https://rntransportesbh.com.br/servicos"
+  image="/banner-og.png"
+  url="https://rntransportesbh.com.br/servicos"
+>
+  <!-- 1. Hero: Conheça nossos serviços -->
+  <section class="relative pt-24 pb-16 md:pt-28 md:pb-20 lg:py-24 bg-gradient-to-br from-[var(--color-dark-blue)]/25 via-[var(--color-background)] to-[var(--color-cyan)]/20">
+    <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
+      <div class="absolute left-[2%] top-[18%] w-7 h-7 bg-[var(--color-yellow)] opacity-60 rotate-12"></div>
+      <div class="absolute left-[1.5%] bottom-[22%] w-6 h-10 bg-[var(--color-cyan)] opacity-55 -rotate-6"></div>
+      <div class="absolute right-[2%] top-[28%] w-6 h-6 bg-[var(--color-cyan)] opacity-60 -rotate-12"></div>
+      <div class="absolute right-[1.5%] bottom-[18%] w-8 h-6 bg-[var(--color-yellow)] opacity-65 rotate-6"></div>
+    </div>
+    <div class="container relative z-10 mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center max-w-6xl mx-auto">
+        <div class="order-2 lg:order-1">
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[var(--color-platinum)]">
+            Conheça nossos serviços
+          </h1>
+          <p class="text-[var(--color-platinum)]/80 text-base md:text-lg leading-relaxed mb-8">
+            Mudanças residenciais, comerciais, interestaduais, aproveitamento de carga e transporte de veículos. Tudo com a qualidade e segurança que você merece.
+          </p>
+          <Button href="/orcamento" variant="primary" size="lg">
+            Quero um orçamento
+          </Button>
+        </div>
+        <div class="relative flex justify-center lg:justify-end order-1 lg:order-2">
+          <img
+            src="/assets/servicos/hero-servicos.png"
+            alt="Profissional da RN Transportes ao lado do caminhão"
+            class="rounded-lg shadow-xl w-full max-w-lg object-cover aspect-[4/3]"
+            width="600"
+            height="450"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Blocos de serviços (texto + imagem, alternando lados) -->
+  {servicos.map((s, i) => {
+    const imageLeft = i % 2 === 0;
+    return (
+      <section class="relative py-12 md:py-20 lg:py-24 bg-[var(--color-background)]">
+        <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
+          <div class="absolute left-[2%] top-[22%] w-6 h-6 bg-[var(--color-yellow)] opacity-60 rotate-6"></div>
+          <div class="absolute left-[1.5%] bottom-[25%] w-7 h-9 bg-[var(--color-cyan)] opacity-55 -rotate-3"></div>
+          <div class="absolute right-[2%] top-[15%] w-8 h-8 bg-[var(--color-cyan)] opacity-58 -rotate-6"></div>
+          <div class="absolute right-[1.5%] bottom-[30%] w-6 h-8 bg-[var(--color-yellow)] opacity-62 rotate-12"></div>
+        </div>
+        <div class="container relative z-10 mx-auto px-6">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-10 lg:gap-14 items-center max-w-6xl mx-auto">
+            <div class={`order-2 ${!imageLeft ? 'lg:order-2' : 'lg:order-none'}`}>
+              <h2 class="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-[var(--color-cyan)]">
+                {s.title}
+              </h2>
+              <p class="text-[var(--color-platinum)]/80 text-base md:text-lg leading-relaxed">
+                {s.text}
+              </p>
+            </div>
+            <div class={`relative flex justify-center order-first lg:order-none ${imageLeft ? 'lg:justify-end' : 'lg:justify-start lg:order-1'}`}>
+              <img
+                src={s.image}
+                alt={s.imageAlt}
+                class="rounded-lg shadow-xl w-full max-w-md object-cover aspect-[4/3]"
+                width="500"
+                height="375"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  })}
+
+  <!-- 3. Comodidade e Segurança (Porto Seguro) -->
+  <section class="relative py-20 md:py-24 bg-gradient-to-br from-[var(--color-dark-blue)]/20 via-[var(--color-background)] to-[var(--color-cyan)]/15">
+    <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
+      <div class="absolute left-[2%] top-[22%] w-6 h-6 bg-[var(--color-yellow)] opacity-60 rotate-6"></div>
+      <div class="absolute left-[1.5%] bottom-[25%] w-7 h-9 bg-[var(--color-cyan)] opacity-55 -rotate-3"></div>
+      <div class="absolute right-[2%] top-[18%] w-8 h-6 bg-[var(--color-cyan)] opacity-58 -rotate-6"></div>
+      <div class="absolute right-[1.5%] bottom-[28%] w-6 h-7 bg-[var(--color-yellow)] opacity-62 rotate-10"></div>
+    </div>
+    <div class="container relative z-10 mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-6 text-[var(--color-platinum)]">
+          Comodidade e Segurança
+        </h2>
+        <p class="text-xl md:text-2xl text-[var(--color-platinum)]/90 font-medium mb-10">
+          Todas as nossas cargas são seguradas pela Porto Seguro.
+        </p>
+        <img
+          src="/assets/servicos/porto-seguro-logo.png"
+          alt="Porto Seguro"
+          class="inline-block w-32 h-32 md:w-40 md:h-40 object-contain opacity-90"
+          width="160"
+          height="160"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. CTA -->
+  <section class="relative py-20 md:py-24 bg-gradient-to-br from-[var(--color-dark-blue)]/15 via-[var(--color-background)] to-[var(--color-cyan)]/15">
+    <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
+      <div class="absolute left-[2%] top-[22%] w-6 h-6 bg-[var(--color-yellow)] opacity-60 rotate-6"></div>
+      <div class="absolute left-[1.5%] bottom-[25%] w-7 h-9 bg-[var(--color-cyan)] opacity-55 -rotate-3"></div>
+      <div class="absolute right-[2%] top-[18%] w-8 h-6 bg-[var(--color-cyan)] opacity-58 -rotate-6"></div>
+      <div class="absolute right-[1.5%] bottom-[28%] w-6 h-7 bg-[var(--color-yellow)] opacity-62 rotate-10"></div>
+    </div>
+    <div class="container relative z-10 mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[var(--color-platinum)]">
+        Faça um orçamento!
+      </h2>
+      <p class="text-lg md:text-xl text-[var(--color-platinum)]/85 mb-10 max-w-2xl mx-auto">
+        Preencha o formulário e solicite seu orçamento gratuito.
+      </p>
+      <Button href="/orcamento" variant="primary" size="lg">
+        Quero um orçamento
+      </Button>
+    </div>
+  </section>
+</BaseLayout>

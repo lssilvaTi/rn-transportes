@@ -1,50 +1,51 @@
 ---
 import FAQSchema from '../seo/FAQSchema.astro';
 
-// FAQ Section
 const faqItems = [
   {
-    question: 'What is included in the maintenance package?',
-    answer: 'Maintenance includes hosting, security updates, performance monitoring, and small content changes. It\'s included in both Starter and Business packages with a minimum 1-year contract.',
+    question: 'A RN Transportes atende em todo o Brasil?',
+    answer: 'Sim. Realizamos mudanças interestaduais para todo o Brasil, com frota própria de caminhões baú e equipe qualificada. Também atendemos mudanças locais em Belo Horizonte e região.',
   },
   {
-    question: 'How long does it take to complete a project?',
-    answer: 'Timeline varies based on the plan and project scope. Typically, Starter projects take 1-2 weeks, while Business projects take 2-4 weeks. We\'ll provide a detailed timeline after reviewing your requirements.',
+    question: 'Como solicito um orçamento?',
+    answer: 'Você pode preencher o formulário no site, enviar uma mensagem pelo WhatsApp ou ligar para (31) 3454-9283. Analisamos sua necessidade e retornamos com um orçamento personalizado.',
   },
   {
-    question: 'Can I upgrade my plan later?',
-    answer: 'Yes, you can upgrade from Starter to Business at any time. We\'ll adjust pricing accordingly and ensure a smooth transition.',
+    question: 'Quais tipos de mudança a RN realiza?',
+    answer: 'Realizamos mudanças residenciais, comerciais, industriais, transporte de veículos (carros e motos), aproveitamento de carga e serviço de guarda-móveis. Cada projeto é avaliado de forma individual.',
   },
   {
-    question: 'Do you provide SEO optimization?',
-    answer: 'Basic SEO optimization is included in the Business package. This includes meta tags, structured data, sitemap, and performance optimization. Advanced SEO services can be discussed separately.',
+    question: 'A empresa possui frota própria?',
+    answer: 'Sim. Contamos com frota própria de caminhões baú, material adequado para embalagem e transporte, e equipe treinada para montagem e desmontagem de móveis com segurança.',
   },
   {
-    question: 'What payment methods do you accept?',
-    answer: 'We use Stripe for secure payments. You\'ll receive a payment link via email after we review and confirm your project scope.',
-  },
-  {
-    question: 'What happens after I submit the form?',
-    answer: 'We\'ll review your project requirements within 24 hours and send you a confirmation email with the final scope, timeline, and payment link. Once payment is confirmed, your project begins.',
+    question: 'Quanto tempo demora para agendar uma mudança?',
+    answer: 'Depende da disponibilidade e da complexidade do serviço. Após o orçamento aprovado, definimos a data e o horário que melhor se adequem à sua necessidade.',
   },
 ];
 ---
 
 <FAQSchema questions={faqItems} />
 
-<section id="faq" class="py-20 bg-[var(--color-background-dark)]">
-  <div class="container mx-auto px-6 max-w-3xl">
-    <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-[var(--color-platinum)]">
-      Frequently Asked Questions
+<section id="faq" class="relative py-20 md:py-24 bg-[var(--color-background-dark)]">
+  <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
+    <div class="absolute left-[2%] top-[20%] w-6 h-7 bg-[var(--color-yellow)] opacity-55 rotate-8"></div>
+    <div class="absolute left-[1.5%] bottom-[22%] w-7 h-6 bg-[var(--color-cyan)] opacity-52 -rotate-6"></div>
+    <div class="absolute right-[2%] top-[30%] w-7 h-7 bg-[var(--color-cyan)] opacity-55 -rotate-8"></div>
+    <div class="absolute right-[1.5%] bottom-[18%] w-6 h-8 bg-[var(--color-yellow)] opacity-58 rotate-5"></div>
+  </div>
+  <div class="container relative z-10 mx-auto px-6 max-w-3xl">
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-14 md:mb-16 text-[var(--color-platinum)]">
+      Perguntas Frequentes
     </h2>
     <div class="space-y-4">
       {faqItems.map((item) => (
-        <details class="bg-[var(--color-background-dark)] rounded-lg border border-[var(--color-platinum)]/10 group">
-          <summary class="p-6 cursor-pointer list-none flex items-center justify-between text-[var(--color-platinum)] font-semibold hover:text-[var(--color-bondi-blue)] transition-colors">
+        <details class="bg-[var(--color-background)] rounded-xl border border-[var(--color-platinum)]/10 group">
+          <summary class="p-5 md:p-6 cursor-pointer list-none flex items-center justify-between text-[var(--color-platinum)] font-semibold hover:text-[var(--color-bondi-blue)] transition-colors gap-4">
             <span>{item.question}</span>
-            <i class="fas fa-chevron-down text-sm transition-transform group-open:rotate-180"></i>
+            <i class="fas fa-chevron-down text-sm flex-shrink-0 transition-transform group-open:rotate-180"></i>
           </summary>
-          <div class="px-6 pb-6 text-[var(--color-platinum)]/70">
+          <div class="px-5 md:px-6 pb-5 md:pb-6 text-[var(--color-platinum)]/75 leading-relaxed">
             {item.answer}
           </div>
         </details>

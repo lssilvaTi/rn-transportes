@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+
+const diferenciais = [
+  { title: 'Carga segurada pela Porto Seguro Seguradora', icon: 'fa-shield-halved' },
+  { title: 'Equipe altamente treinada e qualificada para mudanças', icon: 'fa-users' },
+  { title: 'Material adequado para transporte de mudanças', icon: 'fa-box-open' },
+  { title: 'Frota de caminhões própria', icon: 'fa-truck' },
+  { title: 'Alto cuidado na montagem e desmontagem de móveis', icon: 'fa-toolbox' },
+  { title: 'Agilidade nos processos e transporte de mudança', icon: 'fa-bolt' },
+  { title: 'Separação e organização dos pertences', icon: 'fa-layer-group' },
+  { title: 'Fazemos transportes de mudanças para todo o Brasil!', icon: 'fa-globe' },
+];
+---
+
+<BaseLayout
+  title="Sobre Nós | RN Transportes e Mudanças"
+  description="Para nós, cada projeto é individual e personalizado. Tradição, qualidade e segurança em mudanças residenciais, comerciais, industriais e guarda-móveis. Frota própria e profissionais qualificados em Belo Horizonte."
+  keywords="sobre RN Transportes, mudanças BH, tradição mudanças, frota própria, Porto Seguro, Belo Horizonte"
+  canonical="https://rntransportesbh.com.br/sobre-nos"
+  image="/banner-og.png"
+  url="https://rntransportesbh.com.br/sobre-nos"
+>
+  <!-- 1. Bloco de abertura: título, textos e imagem do caminhão -->
+  <section class="relative pt-24 pb-16 md:pt-28 md:pb-20 lg:py-24 bg-gradient-to-br from-[var(--color-dark-blue)]/25 via-[var(--color-background)] to-[var(--color-cyan)]/20">
+    <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
+      <div class="absolute left-[2%] top-[18%] w-7 h-7 bg-[var(--color-yellow)] opacity-60 rotate-12"></div>
+      <div class="absolute left-[1.5%] bottom-[22%] w-6 h-10 bg-[var(--color-cyan)] opacity-55 -rotate-6"></div>
+      <div class="absolute right-[2%] top-[28%] w-6 h-6 bg-[var(--color-cyan)] opacity-60 -rotate-12"></div>
+      <div class="absolute right-[1.5%] bottom-[18%] w-8 h-6 bg-[var(--color-yellow)] opacity-65 rotate-6"></div>
+    </div>
+    <div class="container relative z-10 mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center max-w-6xl mx-auto">
+        <div>
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[var(--color-platinum)]">
+            Para nós, cada projeto é individual e personalizado.
+          </h1>
+          <p class="text-lg md:text-xl text-[var(--color-cyan)] font-medium mb-5">
+            Oferecemos tradição, qualidade e segurança para sua mudança!
+          </p>
+          <p class="text-[var(--color-platinum)]/80 text-base md:text-lg leading-relaxed mb-5">
+            Com uma frota própria de caminhões baú, profissionais qualificados e especializados no ramo de mudanças residenciais, comerciais, industriais e guarda-móveis, somos a melhor empresa de Belo Horizonte no ramo de transportes.
+          </p>
+          <p class="text-[var(--color-platinum)]/75 text-base md:text-lg">
+            Para nós, cada projeto é individual e personalizado.
+          </p>
+        </div>
+        <div class="relative flex justify-center lg:justify-end">
+          <img
+            src="/assets/sobre/caminhao.png"
+            alt="Caminhão RN Transportes e Mudanças em condomínio"
+            class="rounded-lg shadow-xl w-full max-w-lg object-cover aspect-[4/3]"
+            width="600"
+            height="450"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Diferenciais -->
+  <section class="relative py-20 md:py-24 bg-[var(--color-background)]">
+    <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
+      <div class="absolute left-[2%] top-[22%] w-6 h-6 bg-[var(--color-yellow)] opacity-60 rotate-6"></div>
+      <div class="absolute left-[1.5%] bottom-[25%] w-7 h-9 bg-[var(--color-cyan)] opacity-55 -rotate-3"></div>
+      <div class="absolute right-[2%] top-[15%] w-8 h-8 bg-[var(--color-cyan)] opacity-58 -rotate-6"></div>
+      <div class="absolute right-[1.5%] bottom-[30%] w-6 h-8 bg-[var(--color-yellow)] opacity-62 rotate-12"></div>
+    </div>
+    <div class="container relative z-10 mx-auto px-6">
+      <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-4 text-[var(--color-platinum)]">
+        Conheça nossos diferenciais
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mt-12">
+        {diferenciais.map((d) => (
+          <div class="flex items-start gap-4 p-5 rounded-lg bg-[var(--color-background-dark)] border border-[var(--color-platinum)]/20 hover:border-[var(--color-cyan)]/40 transition-all">
+            <div class="flex-shrink-0 w-12 h-12 rounded-sm bg-[var(--color-yellow)] flex items-center justify-center">
+              <i class={`fas ${d.icon} text-lg text-[var(--color-dark-blue)]`}></i>
+            </div>
+            <p class="text-[var(--color-platinum)]/90 font-medium pt-1">
+              {d.title}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Depoimento / quote: Raimundo Nonato -->
+  <section class="relative py-20 md:py-24 bg-gradient-to-br from-[var(--color-dark-blue)]/20 via-[var(--color-background)] to-[var(--color-cyan)]/15">
+    <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
+      <div class="absolute left-[2%] top-[22%] w-6 h-6 bg-[var(--color-yellow)] opacity-60 rotate-6"></div>
+      <div class="absolute left-[1.5%] bottom-[25%] w-7 h-9 bg-[var(--color-cyan)] opacity-55 -rotate-3"></div>
+      <div class="absolute right-[2%] top-[18%] w-8 h-6 bg-[var(--color-cyan)] opacity-58 -rotate-6"></div>
+      <div class="absolute right-[1.5%] bottom-[28%] w-6 h-7 bg-[var(--color-yellow)] opacity-62 rotate-10"></div>
+    </div>
+    <div class="container relative z-10 mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-center">
+        <blockquote class="text-2xl md:text-3xl lg:text-4xl font-semibold text-[var(--color-platinum)] mb-8 leading-snug">
+          “Qualidade em transporte, é com a RN Transportes e Mudanças!”
+        </blockquote>
+        <div class="flex flex-col items-center gap-4">
+          <img
+            src="/assets/sobre/raimundo-nonato.png"
+            alt="Raimundo Nonato"
+            class="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover border-4 border-[var(--color-cyan)] shadow-lg"
+            width="112"
+            height="112"
+          />
+          <cite class="text-[var(--color-cyan)] font-medium text-lg not-italic">
+            Raimundo Nonato
+          </cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. CTA -->
+  <section class="relative py-20 md:py-24 bg-gradient-to-br from-[var(--color-dark-blue)]/15 via-[var(--color-background)] to-[var(--color-cyan)]/15">
+    <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
+      <div class="absolute left-[2%] top-[22%] w-6 h-6 bg-[var(--color-yellow)] opacity-60 rotate-6"></div>
+      <div class="absolute left-[1.5%] bottom-[25%] w-7 h-9 bg-[var(--color-cyan)] opacity-55 -rotate-3"></div>
+      <div class="absolute right-[2%] top-[18%] w-8 h-6 bg-[var(--color-cyan)] opacity-58 -rotate-6"></div>
+      <div class="absolute right-[1.5%] bottom-[28%] w-6 h-7 bg-[var(--color-yellow)] opacity-62 rotate-10"></div>
+    </div>
+    <div class="container relative z-10 mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[var(--color-platinum)]">
+        Faça um orçamento!
+      </h2>
+      <p class="text-lg md:text-xl text-[var(--color-platinum)]/85 mb-10 max-w-2xl mx-auto">
+        Preencha o formulário e solicite seu orçamento gratuito.
+      </p>
+      <Button href="/orcamento" variant="primary" size="lg">
+        Quero um orçamento
+      </Button>
+    </div>
+  </section>
+</BaseLayout>

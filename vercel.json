@@ -1,3 +1,6 @@
 {
-  "framework": "astro"
+  "framework": "astro",
+  "redirects": [
+    { "source": "/form", "destination": "/orcamento", "permanent": true }
+  ]
 }

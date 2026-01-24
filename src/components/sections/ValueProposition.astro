@@ -1,39 +1,52 @@
 ---
-// Value Proposition Section
+// Seção "Tradição, qualidade e segurança!" + "Nossos Diferenciais"
+import { DIFFERENTIALS } from '../../utils/constants';
+import Button from '../ui/Button.astro';
 ---
 
-<section id="value-proposition" class="py-20 bg-[var(--color-background-dark)]">
-  <div class="container mx-auto px-6">
-    <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-[var(--color-platinum)]">
-      Why Choose Axory Studio
-    </h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="text-center p-8 rounded-lg bg-[var(--color-background-dark)]/50 border border-[var(--color-platinum)]/10 hover:border-[var(--color-indigo-velvet)]/50 transition-all">
-        <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-[var(--color-indigo-velvet)] to-[var(--color-bondi-blue)] flex items-center justify-center">
-          <i class="fas fa-star text-2xl text-white"></i>
-        </div>
-        <h3 class="text-2xl font-semibold mb-4 text-[var(--color-platinum)]">Premium Quality</h3>
-        <p class="text-[var(--color-platinum)]/70">
-          Exceptional design and code quality that reflects your brand&apos;s sophistication and attention to detail.
-        </p>
-      </div>
-      <div class="text-center p-8 rounded-lg bg-[var(--color-background-dark)]/50 border border-[var(--color-platinum)]/10 hover:border-[var(--color-indigo-velvet)]/50 transition-all">
-        <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-[var(--color-indigo-velvet)] to-[var(--color-bondi-blue)] flex items-center justify-center">
-          <i class="fas fa-bolt text-2xl text-white"></i>
-        </div>
-        <h3 class="text-2xl font-semibold mb-4 text-[var(--color-platinum)]">Fast Delivery</h3>
-        <p class="text-[var(--color-platinum)]/70">
-          Optimized templates and streamlined processes ensure quick turnaround without compromising quality.
-        </p>
-      </div>
-      <div class="text-center p-8 rounded-lg bg-[var(--color-background-dark)]/50 border border-[var(--color-platinum)]/10 hover:border-[var(--color-indigo-velvet)]/50 transition-all">
-        <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-[var(--color-indigo-velvet)] to-[var(--color-bondi-blue)] flex items-center justify-center">
-          <i class="fas fa-headset text-2xl text-white"></i>
-        </div>
-        <h3 class="text-2xl font-semibold mb-4 text-[var(--color-platinum)]">Ongoing Support</h3>
-        <p class="text-[var(--color-platinum)]/70">
-          Maintenance and hosting included, ensuring your site stays updated and performs optimally.
-        </p>
+<section id="sobre" class="relative py-12 md:py-20 lg:py-24 bg-[var(--color-background)]">
+  <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
+    <div class="absolute left-[2%] top-[22%] w-6 h-6 bg-[var(--color-yellow)] opacity-60 rotate-6"></div>
+    <div class="absolute left-[1.5%] bottom-[25%] w-7 h-9 bg-[var(--color-cyan)] opacity-55 -rotate-3"></div>
+    <div class="absolute right-[2%] top-[15%] w-8 h-8 bg-[var(--color-cyan)] opacity-58 -rotate-6"></div>
+    <div class="absolute right-[1.5%] bottom-[30%] w-6 h-8 bg-[var(--color-yellow)] opacity-62 rotate-12"></div>
+  </div>
+  <div class="container relative z-10 mx-auto px-6">
+    <!-- Tradição, qualidade e segurança -->
+    <div class="max-w-4xl mx-auto text-center mb-10 md:mb-20">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[var(--color-platinum)]">
+        Tradição, qualidade e segurança!
+      </h2>
+      <p class="text-xl md:text-2xl text-[var(--color-cyan)] font-medium mb-8">
+        A RN Transportes e Mudanças está há mais de 15 anos no mercado!
+      </p>
+      <p class="text-[var(--color-platinum)]/80 text-lg md:text-xl leading-relaxed mb-8">
+        Oferecemos tradição, qualidade e segurança para sua mudança! Com uma frota própria de caminhões baú, profissionais qualificados e especializados no ramo de mudanças residenciais, comerciais, industriais e guarda-móveis, somos a melhor empresa de Belo Horizonte no ramo de transportes.
+      </p>
+      <p class="text-[var(--color-platinum)]/75 mb-10">
+        Para nós, cada projeto é individual e personalizado.
+      </p>
+      <Button href="#diferenciais" variant="outline" size="lg">
+        Conheça nossos diferenciais
+      </Button>
+    </div>
+
+    <!-- Nossos Diferenciais -->
+    <div id="diferenciais">
+      <h3 class="text-2xl md:text-3xl font-bold text-center mb-12 text-[var(--color-platinum)]">
+        Nossos Diferenciais
+      </h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {DIFFERENTIALS.map((d) => (
+          <div class="flex items-start gap-4 p-5 rounded-lg bg-[var(--color-background-dark)] border border-[var(--color-platinum)]/20 hover:border-[var(--color-cyan)]/40 transition-all">
+            <div class="flex-shrink-0 w-12 h-12 rounded-sm bg-[var(--color-yellow)] flex items-center justify-center">
+              <i class={`fas ${d.icon} text-lg text-[var(--color-dark-blue)]`}></i>
+            </div>
+            <p class="text-[var(--color-platinum)]/90 font-medium pt-1">
+              {d.title}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   </div>

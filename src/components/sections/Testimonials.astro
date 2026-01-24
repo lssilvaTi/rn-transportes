@@ -1,51 +1,45 @@
 ---
-// Testimonials Section
 const testimonials = [
   {
-    name: 'Client Name',
-    company: 'Company Name',
-    text: 'Axory Studio delivered exactly what we needed. The attention to detail and quality is outstanding.',
+    name: 'Marcela Vilas Boas',
+    text: 'A nossa primeira mudança com a RN Transportes e Mudanças foi saindo da cidade de Além Paraíba, Minas Gerais indo até Altamira estado Pará. Não obtivemos nenhum transtorno ou dano, tudo sob os cuidados do Sr. Raimundo, sempre atencioso! Desde então, duas outras mudanças já foram para nós realizadas com o mesmo zelo, responsabilidade e profissionalismo que a RN oferece!',
     rating: 5,
   },
   {
-    name: 'Client Name',
-    company: 'Company Name',
-    text: 'Professional, fast, and the final product exceeded our expectations. Highly recommended!',
-    rating: 5,
-  },
-  {
-    name: 'Client Name',
-    company: 'Company Name',
-    text: 'The team understood our vision and brought it to life beautifully. Great experience throughout.',
+    name: 'Daniel',
+    text: 'Precisamos do serviço de transporte e desde o primeiro contato sentimos muita confiança pela forma como foram feitas todas as tratativas, bem como a equipe que realizou a mobilização da mudança, todos fizeram o trabalho muito bem feito e minha mudança chegou sem nenhuma avaria.',
     rating: 5,
   },
 ];
 ---
 
-<section id="testimonials" class="py-20 bg-[var(--color-background)]">
-  <div class="container mx-auto px-6">
-    <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-[var(--color-platinum)]">
-      What Clients Say
+<section id="testimonials" class="relative py-20 md:py-24 bg-[var(--color-background)]">
+  <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
+    <div class="absolute left-[2%] top-[25%] w-7 h-7 bg-[var(--color-yellow)] opacity-58 rotate-12"></div>
+    <div class="absolute left-[1.5%] bottom-[30%] w-6 h-8 bg-[var(--color-cyan)] opacity-55 -rotate-4"></div>
+    <div class="absolute right-[2%] top-[18%] w-6 h-9 bg-[var(--color-cyan)] opacity-58 rotate-(-10)"></div>
+    <div class="absolute right-[1.5%] bottom-[25%] w-7 h-6 bg-[var(--color-yellow)] opacity-60"></div>
+  </div>
+  <div class="container relative z-10 mx-auto px-6">
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-14 md:mb-16 text-[var(--color-platinum)]">
+      Feedback dos Clientes
     </h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-      {testimonials.map((testimonial) => (
-        <div class="bg-[var(--color-background)] rounded-lg p-6 border border-[var(--color-platinum)]/10">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      {testimonials.map((t) => (
+        <div class="bg-[var(--color-background-dark)] rounded-xl p-6 md:p-8 border border-[var(--color-platinum)]/10">
           <div class="flex mb-4">
-            {[...Array(testimonial.rating)].map(() => (
-              <i class="fas fa-star text-[var(--color-bondi-blue)]"></i>
+            {[...Array(t.rating)].map(() => (
+              <i class="fas fa-star text-[var(--color-yellow)]"></i>
             ))}
           </div>
-          <p class="text-[var(--color-platinum)]/80 mb-6 italic">
-            &quot;{testimonial.text}&quot;
+          <p class="text-[var(--color-platinum)]/85 mb-6 italic leading-relaxed">
+            &quot;{t.text}&quot;
           </p>
           <div class="flex items-center">
-            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--color-indigo-velvet)] to-[var(--color-bondi-blue)] flex items-center justify-center text-white font-semibold mr-4">
-              {testimonial.name.charAt(0)}
+            <div class="w-12 h-12 rounded-full bg-[var(--color-dark-blue)] flex items-center justify-center text-white font-semibold mr-4">
+              {t.name.charAt(0)}
             </div>
-            <div>
-              <p class="font-semibold text-[var(--color-platinum)]">{testimonial.name}</p>
-              <p class="text-sm text-[var(--color-platinum)]/60">{testimonial.company}</p>
-            </div>
+            <p class="font-semibold text-[var(--color-platinum)]">{t.name}</p>
           </div>
         </div>
       ))}

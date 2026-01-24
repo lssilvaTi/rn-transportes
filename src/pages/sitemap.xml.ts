@@ -1,7 +1,6 @@
 import type { APIRoute } from 'astro';
-import { getCollection } from 'astro:content';
 
-const SITE_URL = 'https://axory.dev';
+const SITE_URL = 'https://rntransportesbh.com.br';
 
 // Páginas do site
 const pages = [
@@ -11,7 +10,22 @@ const pages = [
     changefreq: 'weekly',
   },
   {
-    url: '/form',
+    url: '/sobre-nos',
+    priority: '0.9',
+    changefreq: 'monthly',
+  },
+  {
+    url: '/servicos',
+    priority: '0.9',
+    changefreq: 'monthly',
+  },
+  {
+    url: '/contato',
+    priority: '0.9',
+    changefreq: 'monthly',
+  },
+  {
+    url: '/orcamento',
     priority: '0.8',
     changefreq: 'weekly',
   },

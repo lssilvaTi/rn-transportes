@@ -2,28 +2,39 @@
 import { PROCESS_STEPS } from '../../utils/constants';
 ---
 
-<section id="process" class="py-20 bg-[var(--color-background)]">
-  <div class="container mx-auto px-6">
-    <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-[var(--color-platinum)]">
-      Our Simple Process
+<section id="process" class="relative py-20 md:py-24 bg-[var(--color-background-dark)]">
+  <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
+    <div class="absolute left-[2%] top-[20%] w-6 h-8 bg-[var(--color-cyan)] opacity-55 -rotate-6"></div>
+    <div class="absolute left-[1.5%] bottom-[28%] w-7 h-7 bg-[var(--color-yellow)] opacity-60 rotate-8"></div>
+    <div class="absolute right-[2%] top-[35%] w-8 h-6 bg-[var(--color-yellow)] opacity-58 rotate-(-8)"></div>
+    <div class="absolute right-[1.5%] bottom-[20%] w-6 h-9 bg-[var(--color-cyan)] opacity-55 rotate-3"></div>
+  </div>
+  <div class="container relative z-10 mx-auto px-6">
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4 text-[var(--color-platinum)]">
+      Como funciona
     </h2>
-    <div class="max-w-5xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {PROCESS_STEPS.map((step, index) => (
-          <div class={`relative ${index % 2 === 0 ? 'md:bg-[var(--color-background)]' : 'bg-[var(--color-background-dark)]'} rounded-lg p-6 border border-[var(--color-platinum)]/10 hover:border-[var(--color-indigo-velvet)]/50 transition-all`}>
-            <div class="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-gradient-to-br from-[var(--color-indigo-velvet)] to-[var(--color-bondi-blue)] flex items-center justify-center text-white font-bold text-xl shadow-lg">
+    <p class="text-center text-[var(--color-platinum)]/70 mb-14 md:mb-16 text-lg max-w-2xl mx-auto">
+      Do orçamento até a entrega da sua mudança
+    </p>
+    <div class="max-w-4xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        {PROCESS_STEPS.map((step) => (
+            <div class="relative bg-[var(--color-background)] rounded-lg p-6 md:p-8 border border-[var(--color-platinum)]/20 hover:border-[var(--color-cyan)]/40 transition-all">
+            <div class="absolute -top-3 -left-3 w-12 h-12 rounded-sm bg-[var(--color-yellow)] flex items-center justify-center text-[var(--color-dark-blue)] font-bold text-lg shadow-lg">
               {step.number}
             </div>
-            <h3 class="text-xl font-semibold mb-3 mt-4 text-[var(--color-platinum)]">{step.title}</h3>
-            <p class="text-[var(--color-platinum)]/70">{step.description}</p>
+            <h3 class="text-xl font-semibold mb-3 mt-2 text-[var(--color-platinum)]">
+              {step.title}
+            </h3>
+            <p class="text-[var(--color-platinum)]/70 leading-relaxed">
+              {step.description}
+            </p>
           </div>
         ))}
       </div>
     </div>
-    <div class="mt-16 text-center">
-      <p class="text-lg text-[var(--color-platinum)]/80">
-        We'll review your project and get back to you within <span class="font-semibold text-[var(--color-bondi-blue)]">24 hours</span>
-      </p>
-    </div>
+    <p class="mt-12 text-center text-[var(--color-platinum)]/80">
+      Dúvidas? Fale conosco pelo <a href="https://wa.me/5531988435877" target="_blank" rel="noopener noreferrer" class="text-[var(--color-cyan)] hover:underline font-medium">WhatsApp</a> ou solicite um orçamento.
+    </p>
   </div>
 </section>

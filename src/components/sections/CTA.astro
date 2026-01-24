@@ -1,25 +1,32 @@
 ---
 import Button from '../ui/Button.astro';
+import { CONTACT } from '../../utils/constants';
 ---
 
-<section id="contact" class="py-20 bg-gradient-to-br from-[var(--color-indigo-velvet)]/20 via-[var(--color-background)] to-[var(--color-bondi-blue)]/20">
-  <div class="container mx-auto px-6 text-center">
-    <h2 class="text-4xl md:text-5xl font-bold mb-6 text-[var(--color-platinum)]">
-      Ready to Start Your Project?
+<section id="contact" class="relative py-20 md:py-24 bg-gradient-to-br from-[var(--color-dark-blue)]/15 via-[var(--color-background)] to-[var(--color-cyan)]/15">
+  <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
+    <div class="absolute left-[2%] top-[22%] w-6 h-6 bg-[var(--color-yellow)] opacity-60 rotate-6"></div>
+    <div class="absolute left-[1.5%] bottom-[25%] w-7 h-9 bg-[var(--color-cyan)] opacity-55 -rotate-3"></div>
+    <div class="absolute right-[2%] top-[18%] w-8 h-6 bg-[var(--color-cyan)] opacity-58 -rotate-6"></div>
+    <div class="absolute right-[1.5%] bottom-[28%] w-6 h-7 bg-[var(--color-yellow)] opacity-62 rotate-10"></div>
+  </div>
+  <div class="container relative z-10 mx-auto px-6 text-center">
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[var(--color-platinum)]">
+      Faça um orçamento!
     </h2>
-    <p class="text-xl text-[var(--color-platinum)]/80 mb-8 max-w-2xl mx-auto">
-      Let's bring your vision to life with a premium website that reflects your brand's excellence.
+    <p class="text-lg md:text-xl text-[var(--color-platinum)]/85 mb-10 max-w-2xl mx-auto">
+      Preencha o formulário ou fale conosco pelo WhatsApp e solicite seu orçamento gratuito.
     </p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <Button href="/form" variant="primary" size="lg">
-        Get Started Now
+      <Button href="/orcamento" variant="primary" size="lg">
+        Quero um orçamento
       </Button>
-      <Button href="#pricing" variant="outline" size="lg">
-        View Pricing
+      <Button href={`https://wa.me/${CONTACT.whatsapp}`} variant="outline" size="lg" target="_blank" rel="noopener noreferrer">
+        Falar no WhatsApp
       </Button>
     </div>
     <p class="mt-8 text-[var(--color-platinum)]/60 text-sm">
-      Or contact us directly via <a href="https://wa.me/5531996257466" target="_blank" class="text-[var(--color-bondi-blue)] hover:underline">WhatsApp</a>
+      Ou ligue: <a href={`tel:+55${CONTACT.phone.replace(/\D/g, '')}`} class="text-[var(--color-cyan)] hover:underline">{CONTACT.phone}</a>
     </p>
   </div>
 </section>

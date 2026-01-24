@@ -1,4 +1,6 @@
 ---
+import { CONTACT } from '../../utils/constants';
+
 interface Props {
   title: string;
   description: string;
@@ -15,10 +17,10 @@ const {
   title,
   description,
   image = '/banner-og.png',
-  url = 'https://axory.dev',
+  url = 'https://rntransportesbh.com.br',
   type = 'website',
-  keywords = 'web development, custom websites, premium web design, responsive websites, SEO optimization, web development studio, Axory Studio',
-  author = 'Axory Studio',
+  keywords = 'mudanças BH, transporte de mudanças, mudanças interestaduais, mudanças comerciais, mudanças residenciais, RN Transportes, Belo Horizonte',
+  author = 'RN Transportes',
   noindex = false,
   canonical,
 } = Astro.props;
@@ -26,7 +28,6 @@ const {
 const siteUrl = url;
 const pageUrl = canonical || siteUrl + Astro.url.pathname;
 const ogImage = image.startsWith('http') ? image : siteUrl + image;
-const ogImageWebP = ogImage.replace(/\.(png|jpg|jpeg)$/i, '.webp');
 ---
 
 <!-- Primary Meta Tags -->
@@ -38,7 +39,7 @@ const ogImageWebP = ogImage.replace(/\.(png|jpg|jpeg)$/i, '.webp');
 <meta name="keywords" content={keywords} />
 <meta name="author" content={author} />
 <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
-<meta name="language" content="English" />
+<meta name="language" content="Portuguese" />
 <meta name="revisit-after" content="7 days" />
 
 <!-- Canonical URL -->
@@ -54,9 +55,9 @@ const ogImageWebP = ogImage.replace(/\.(png|jpg|jpeg)$/i, '.webp');
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Axory Studio - Premium Web Development" />
-<meta property="og:site_name" content="Axory Studio" />
-<meta property="og:locale" content="en_US" />
+<meta property="og:image:alt" content="RN Transportes e Mudanças" />
+<meta property="og:site_name" content="RN Transportes" />
+<meta property="og:locale" content="pt_BR" />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
@@ -64,7 +65,7 @@ const ogImageWebP = ogImage.replace(/\.(png|jpg|jpeg)$/i, '.webp');
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImage} />
-<meta name="twitter:image:alt" content="Axory Studio - Premium Web Development" />
+<meta name="twitter:image:alt" content="RN Transportes e Mudanças" />
 
 <!-- Favicons -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -80,32 +81,31 @@ const ogImageWebP = ogImage.replace(/\.(png|jpg|jpeg)$/i, '.webp');
 <script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Axory Studio",
+  "name": "RN Transportes e Mudanças",
   "url": siteUrl,
-  "logo": siteUrl + "/assets/logos/logo-full-light.png",
+  "logo": siteUrl + "/favicon.svg",
   "description": description,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": CONTACT.address,
+    "addressLocality": "Belo Horizonte",
+    "addressRegion": "MG",
+    "postalCode": CONTACT.cep
+  },
   "contactPoint": {
     "@type": "ContactPoint",
-    "contactType": "Sales",
-    "availableLanguage": ["English"]
-  },
-  "sameAs": [
-    // Add social media links here when available
-  ]
+    "telephone": "+55" + CONTACT.phone.replace(/\D/g, ''),
+    "email": CONTACT.email,
+    "contactType": "customer service",
+    "availableLanguage": ["Portuguese"],
+    "areaServed": "BR"
+  }
 })} />
 
 <script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "Axory Studio",
+  "name": "RN Transportes e Mudanças",
   "url": siteUrl,
-  "description": description,
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": {
-      "@type": "EntryPoint",
-      "urlTemplate": siteUrl + "/search?q={search_term_string}"
-    },
-    "query-input": "required name=search_term_string"
-  }
+  "description": description
 })} />

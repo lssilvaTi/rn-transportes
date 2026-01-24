@@ -1,37 +1,29 @@
 ---
-import Button from '../ui/Button.astro';
+import { CONTACT } from '../../utils/constants';
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-[var(--color-background-dark)]/80 backdrop-blur-md border-b border-[var(--color-platinum)]/10 transition-shadow duration-300">
+<header class="header-rn fixed top-0 left-0 right-0 z-50 bg-[var(--color-header-bg)]/95 backdrop-blur-sm border-b border-white/10 transition-shadow duration-300">
   <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="/" class="flex items-center relative">
-      <!-- Logo para tema dark (full-light) - pré-carregada -->
-      <img 
-        id="logo-dark"
-        src="/assets/logos/logo-full-light.png" 
-        alt="Axory Studio" 
-        class="h-10 md:h-12 transition-opacity duration-300"
-        loading="eager"
-      />
-      <!-- Logo para tema light (full-dark) - pré-carregada -->
-      <img 
-        id="logo-light"
-        src="/assets/logos/logo-full-dark.png" 
-        alt="Axory Studio" 
-        class="h-10 md:h-12 transition-opacity duration-300 absolute top-0 left-0"
-        loading="eager"
-      />
+    <a href="/" class="flex items-center hover:opacity-90 transition-opacity">
+      <img src="/assets/logos/logo-rn-transportes.png" alt="RN Transportes e Mudanças" class="h-10 md:h-12 w-auto" width="180" height="48" />
     </a>
     <!-- Desktop Navigation -->
-    <div class="hidden md:flex items-center gap-8">
-      <a href="#services" class="nav-link text-[var(--color-platinum)] hover:text-[var(--color-bondi-blue)] transition-colors">Services</a>
-      <a href="#pricing" class="nav-link text-[var(--color-platinum)] hover:text-[var(--color-bondi-blue)] transition-colors">Pricing</a>
-      <a href="#process" class="nav-link text-[var(--color-platinum)] hover:text-[var(--color-bondi-blue)] transition-colors">Process</a>
-      <a href="#portfolio" class="nav-link text-[var(--color-platinum)] hover:text-[var(--color-bondi-blue)] transition-colors">Portfolio</a>
-      <Button href="#contact" variant="primary" size="sm">Get Started</Button>
+    <div class="hidden md:flex items-center gap-5 lg:gap-6">
+      <a href="/" class="nav-link-rn text-white/90 hover:text-[var(--color-cyan)] transition-colors">Início</a>
+      <a href="/sobre-nos" class="nav-link-rn text-white/90 hover:text-[var(--color-cyan)] transition-colors">Sobre Nós</a>
+      <a href="/servicos" class="nav-link-rn text-white/90 hover:text-[var(--color-cyan)] transition-colors">Serviços</a>
+      <a href="/contato" class="nav-link-rn text-white/90 hover:text-[var(--color-cyan)] transition-colors">Contato</a>
+      <div class="flex items-center gap-1 border-l border-white/20 pl-4">
+        <a href={CONTACT.facebook} target="_blank" rel="noopener noreferrer" class="header-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" class="header-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href={`https://wa.me/${CONTACT.whatsapp}`} target="_blank" rel="noopener noreferrer" class="header-social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+      <a href="/orcamento" class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-lg bg-white text-[var(--color-dark-blue)] hover:bg-white/90 transition-all">
+        Solicitar orçamento
+      </a>
       <button 
         id="theme-toggle" 
-        class="p-2 rounded-lg text-[var(--color-platinum)]/70 hover:text-[var(--color-platinum)] hover:bg-[var(--color-platinum)]/5 transition-all"
+        class="p-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-all"
         aria-label="Alternar tema"
         title="Alternar tema claro/escuro"
       >
@@ -39,17 +31,17 @@ import Button from '../ui/Button.astro';
       </button>
     </div>
     
-    <!-- Mobile Navigation -->
+    <!-- Mobile -->
     <div class="md:hidden flex items-center gap-3">
       <button 
         id="theme-toggle-mobile" 
-        class="p-2 rounded-lg text-[var(--color-platinum)]/70 hover:text-[var(--color-platinum)] hover:bg-[var(--color-platinum)]/5 transition-all"
+        class="p-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-all"
         aria-label="Alternar tema"
         title="Alternar tema claro/escuro"
       >
         <i class="fas fa-moon text-lg" id="theme-icon-mobile"></i>
       </button>
-      <button class="hamburger text-[var(--color-platinum)]" id="mobile-menu-button" aria-label="Toggle menu" aria-expanded="false">
+      <button class="hamburger text-white" id="mobile-menu-button" aria-label="Abrir menu" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
@@ -57,77 +49,67 @@ import Button from '../ui/Button.astro';
     </div>
     
     <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu mobile-menu-rn" id="mobile-menu">
       <nav class="mobile-menu-nav">
-        <a href="#services" class="mobile-nav-link">Services</a>
-        <a href="#pricing" class="mobile-nav-link">Pricing</a>
-        <a href="#process" class="mobile-nav-link">Process</a>
-        <a href="#portfolio" class="mobile-nav-link">Portfolio</a>
-        <a href="#contact" class="mobile-nav-link">Get Started</a>
+        <a href="/" class="mobile-nav-link-rn">Início</a>
+        <a href="/sobre-nos" class="mobile-nav-link-rn">Sobre Nós</a>
+        <a href="/servicos" class="mobile-nav-link-rn">Serviços</a>
+        <a href="/contato" class="mobile-nav-link-rn">Contato</a>
+        <a href="/orcamento" class="mobile-nav-link-rn">Solicitar orçamento</a>
       </nav>
+      <div class="mobile-menu-social">
+        <a href={CONTACT.facebook} target="_blank" rel="noopener noreferrer" class="mobile-menu-social-link" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" class="mobile-menu-social-link" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href={`https://wa.me/${CONTACT.whatsapp}`} target="_blank" rel="noopener noreferrer" class="mobile-menu-social-link" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
     </div>
   </nav>
 </header>
 
 <style>
-  /* Estado inicial - mostra logo-light (para tema dark) */
-  #logo-dark {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-  }
-  #logo-light {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-  }
-  
-  /* Tema dark: mostra logo-light (logo-full-light.png) */
-  [data-theme="dark"] #logo-dark {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-  }
-  [data-theme="dark"] #logo-light {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-  }
-  
-  /* Tema light: mostra logo-dark (logo-full-dark.png) */
-  [data-theme="light"] #logo-dark {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-  }
-  [data-theme="light"] #logo-light {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-  }
-
-  /* Nav Link Hover Animation */
-  .nav-link {
+  .nav-link-rn {
     position: relative;
     text-decoration: none;
   }
-
-  .nav-link::after {
+  .nav-link-rn::after {
     content: '';
     position: absolute;
     bottom: -4px;
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--color-bondi-blue);
+    background: var(--color-cyan);
     transition: width 0.3s ease;
   }
-
-  .nav-link:hover::after {
+  .nav-link-rn:hover::after {
     width: 100%;
   }
 
-  /* Hamburger Menu Button */
+  .header-social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: white;
+    opacity: 0.9;
+    transition: opacity 0.2s, color 0.2s, background 0.2s;
+  }
+  .header-social-link:hover {
+    opacity: 1;
+    color: var(--color-cyan);
+  }
+  .header-social-link i {
+    font-size: 1rem;
+  }
+
   .hamburger {
     display: flex;
     flex-direction: column;
@@ -141,7 +123,6 @@ import Button from '../ui/Button.astro';
     z-index: 1001;
     gap: 5px;
   }
-
   .hamburger span {
     display: block;
     width: 100%;
@@ -151,256 +132,169 @@ import Button from '../ui/Button.astro';
     transition: all 0.3s ease;
     transform-origin: center;
   }
-
   .hamburger.active span:nth-child(1) {
     transform: rotate(45deg) translate(7px, 7px);
   }
-
   .hamburger.active span:nth-child(2) {
     opacity: 0;
     transform: translateX(-10px);
   }
-
   .hamburger.active span:nth-child(3) {
     transform: rotate(-45deg) translate(7px, -7px);
   }
 
-  /* Mobile Menu */
-  .mobile-menu {
+  .mobile-menu-rn {
     position: fixed;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100vh;
-    background: var(--color-background-dark);
+    background: var(--color-header-bg);
     z-index: 1000;
     transition: left 0.3s ease;
     overflow-y: auto;
     padding-top: 80px;
   }
-
-  .mobile-menu.active {
+  .mobile-menu-rn.active {
     left: 0;
   }
-
   .mobile-menu-nav {
     display: flex;
     flex-direction: column;
     padding: 2rem 1.5rem;
     gap: 1.5rem;
   }
-
-  .mobile-nav-link {
-    color: var(--color-platinum);
+  .mobile-nav-link-rn {
+    color: white;
     text-decoration: none;
     font-size: 1.25rem;
     font-weight: 500;
     padding: 0.75rem 0;
-    border-bottom: 1px solid rgba(229, 231, 235, 0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
     transition: all 0.3s ease;
-    position: relative;
     opacity: 0;
     transform: translateX(-20px);
     animation: slideInFromLeft 0.3s ease forwards;
   }
-
-  .mobile-menu.active .mobile-nav-link:nth-child(1) {
-    animation-delay: 0.1s;
-  }
-  .mobile-menu.active .mobile-nav-link:nth-child(2) {
-    animation-delay: 0.15s;
-  }
-  .mobile-menu.active .mobile-nav-link:nth-child(3) {
-    animation-delay: 0.2s;
-  }
-  .mobile-menu.active .mobile-nav-link:nth-child(4) {
-    animation-delay: 0.25s;
-  }
-  .mobile-menu.active .mobile-nav-link:nth-child(5) {
-    animation-delay: 0.3s;
-  }
-
-  .mobile-nav-link:hover {
-    color: var(--color-bondi-blue);
+  .mobile-menu-rn.active .mobile-nav-link-rn:nth-child(1) { animation-delay: 0.1s; }
+  .mobile-menu-rn.active .mobile-nav-link-rn:nth-child(2) { animation-delay: 0.15s; }
+  .mobile-menu-rn.active .mobile-nav-link-rn:nth-child(3) { animation-delay: 0.2s; }
+  .mobile-menu-rn.active .mobile-nav-link-rn:nth-child(4) { animation-delay: 0.25s; }
+  .mobile-menu-rn.active .mobile-nav-link-rn:nth-child(5) { animation-delay: 0.3s; }
+  .mobile-nav-link-rn:hover {
+    color: var(--color-cyan);
     padding-left: 1rem;
   }
-
+  .mobile-menu-social {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    padding: 1.5rem 1.5rem 2rem;
+    margin-top: 0.5rem;
+    border-top: 1px solid rgba(255,255,255,0.15);
+  }
+  .mobile-menu-social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    transition: background 0.2s, color 0.2s;
+  }
+  .mobile-menu-social-link:hover {
+    background: var(--color-cyan);
+    color: white;
+  }
+  .mobile-menu-social-link i {
+    font-size: 1.25rem;
+  }
   @keyframes slideInFromLeft {
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+    to { opacity: 1; transform: translateX(0); }
   }
-
   @media (min-width: 768px) {
-    .mobile-menu {
-      display: none;
-    }
+    .mobile-menu-rn { display: none; }
   }
-
-  /* Header scroll effect */
-  header.scrolled {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    border-bottom-color: rgba(229, 231, 235, 0.2);
+  .header-rn.scrolled {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    border-bottom-color: rgba(255,255,255,0.15);
   }
 </style>
 
 <script>
-  function updateLogo(theme: string) {
-    const logoDark = document.getElementById('logo-dark');
-    const logoLight = document.getElementById('logo-light');
-    
-    if (theme === 'light') {
-      // Tema light: mostra logo-dark (logo-full-dark.png)
-      if (logoDark) {
-        logoDark.style.opacity = '0';
-        logoDark.style.visibility = 'hidden';
-        logoDark.style.pointerEvents = 'none';
-      }
-      if (logoLight) {
-        logoLight.style.opacity = '1';
-        logoLight.style.visibility = 'visible';
-        logoLight.style.pointerEvents = 'auto';
-      }
-    } else {
-      // Tema dark: mostra logo-light (logo-full-light.png)
-      if (logoDark) {
-        logoDark.style.opacity = '1';
-        logoDark.style.visibility = 'visible';
-        logoDark.style.pointerEvents = 'auto';
-      }
-      if (logoLight) {
-        logoLight.style.opacity = '0';
-        logoLight.style.visibility = 'hidden';
-        logoLight.style.pointerEvents = 'none';
-      }
-    }
-  }
-
   function updateIcon(theme: string) {
     const icon = document.getElementById('theme-icon');
     const iconMobile = document.getElementById('theme-icon-mobile');
-    
     if (icon) icon.className = theme === 'light' ? 'fas fa-sun text-lg' : 'fas fa-moon text-lg';
     if (iconMobile) iconMobile.className = theme === 'light' ? 'fas fa-sun text-lg' : 'fas fa-moon text-lg';
   }
-
   function toggleTheme() {
     const current = document.documentElement.getAttribute('data-theme');
     const newTheme = current === 'light' ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
     updateIcon(newTheme);
-    updateLogo(newTheme);
   }
-
-  // Mobile Menu Toggle
   function initMobileMenu() {
     const hamburger = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
-    
-    if (hamburger && mobileMenu) {
-      hamburger.addEventListener('click', () => {
-        mobileMenu.classList.toggle('active');
-        hamburger.classList.toggle('active');
-        hamburger.setAttribute('aria-expanded', 
-          hamburger.classList.contains('active') ? 'true' : 'false'
-        );
-        // Previne scroll quando menu está aberto
-        document.body.style.overflow = hamburger.classList.contains('active') ? 'hidden' : '';
+    if (!hamburger || !mobileMenu) return;
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+      hamburger.classList.toggle('active');
+      hamburger.setAttribute('aria-expanded', hamburger.classList.contains('active') ? 'true' : 'false');
+      document.body.style.overflow = hamburger.classList.contains('active') ? 'hidden' : '';
+    });
+    mobileMenu.querySelectorAll('.mobile-nav-link-rn, .mobile-menu-social-link').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
       });
-
-      // Fecha menu ao clicar em um link
-      const mobileNavLinks = mobileMenu.querySelectorAll('.mobile-nav-link');
-      mobileNavLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          mobileMenu.classList.remove('active');
-          hamburger.classList.remove('active');
-          hamburger.setAttribute('aria-expanded', 'false');
-          document.body.style.overflow = '';
-        });
-      });
-
-      // Fecha menu ao clicar fora
-      document.addEventListener('click', (e) => {
-        const target = e.target as Node | null;
-        if (mobileMenu.classList.contains('active') && 
-            target && 
-            !mobileMenu.contains(target) && 
-            !hamburger.contains(target)) {
-          mobileMenu.classList.remove('active');
-          hamburger.classList.remove('active');
-          hamburger.setAttribute('aria-expanded', 'false');
-          document.body.style.overflow = '';
-        }
-      });
-    }
+    });
+    document.addEventListener('click', (e) => {
+      const target = e.target as Node | null;
+      if (mobileMenu.classList.contains('active') && target && !mobileMenu.contains(target) && !hamburger.contains(target)) {
+        mobileMenu.classList.remove('active');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    });
   }
-
-  // Smooth Scrolling para links âncora
   function initSmoothScrolling() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       anchor.addEventListener('click', (e) => {
         const href = anchor.getAttribute('href');
         if (!href || href === '#' || href === '#!') return;
-        
         const target = document.querySelector(href);
         if (target) {
           e.preventDefault();
           const headerOffset = 80;
           const elementPosition = target.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
         }
       });
     });
   }
-
-  // Header scroll effect (sombra ao fazer scroll)
   function initHeaderScrollEffect() {
-    const header = document.querySelector('header');
+    const header = document.querySelector('.header-rn');
     if (!header) return;
-
-    let lastScroll = 0;
     window.addEventListener('scroll', () => {
-      const currentScroll = window.pageYOffset;
-      
-      if (currentScroll > 100) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-      
-      lastScroll = currentScroll;
+      header.classList.toggle('scrolled', window.pageYOffset > 100);
     });
   }
-
   document.addEventListener('DOMContentLoaded', () => {
     const theme = document.documentElement.getAttribute('data-theme') || 'dark';
     updateIcon(theme);
-    updateLogo(theme);
-    
     document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
     document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggleTheme);
-    
-    // Inicializa menu mobile, smooth scrolling e efeito de scroll
     initMobileMenu();
     initSmoothScrolling();
     initHeaderScrollEffect();
-    
-    // Observa mudanças no atributo data-theme
-    const observer = new MutationObserver(() => {
-      const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-      updateLogo(currentTheme);
-    });
-    
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['data-theme']
-    });
   });
 </script>

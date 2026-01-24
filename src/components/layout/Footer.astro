@@ -1,69 +1,45 @@
 ---
-import Logo from '../ui/Logo.astro';
+import { CONTACT } from '../../utils/constants';
+const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-[var(--color-background-dark)] border-t border-[var(--color-platinum)]/10 py-12">
+<footer class="bg-[var(--color-header-bg)] border-t border-white/10 py-12 md:py-16">
   <div class="container mx-auto px-6">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-      <div class="col-span-1 md:col-span-2">
-        <Logo id="footer-logo" variant="mono-light" class="h-10 mb-4 transition-opacity" />
-        <p class="text-[var(--color-platinum)]/70 max-w-md">
-          Premium web development studio crafting sophisticated digital experiences with innovation and care.
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+      <div class="lg:col-span-2">
+        <a href="/" class="inline-block mb-4 hover:opacity-90 transition-opacity">
+          <img src="/assets/logos/logo-rn-transportes.png" alt="RN Transportes e Mudanças" class="h-10 md:h-12 w-auto" width="180" height="48" />
+        </a>
+        <p class="text-white/75 max-w-md leading-relaxed">
+          Tradição, qualidade e segurança em mudanças residenciais, comerciais e interestaduais. Mais de 15 anos no mercado de Belo Horizonte e todo o Brasil.
         </p>
       </div>
       <div>
-        <h3 class="text-[var(--color-platinum)] font-semibold mb-4">Quick Links</h3>
+        <h3 class="text-white font-semibold mb-4">Páginas</h3>
         <ul class="space-y-2">
-          <li><a href="#services" class="text-[var(--color-platinum)]/70 hover:text-[var(--color-bondi-blue)] transition-colors">Services</a></li>
-          <li><a href="#pricing" class="text-[var(--color-platinum)]/70 hover:text-[var(--color-bondi-blue)] transition-colors">Pricing</a></li>
-          <li><a href="#process" class="text-[var(--color-platinum)]/70 hover:text-[var(--color-bondi-blue)] transition-colors">Process</a></li>
-          <li><a href="#portfolio" class="text-[var(--color-platinum)]/70 hover:text-[var(--color-bondi-blue)] transition-colors">Portfolio</a></li>
+          <li><a href="/" class="text-white/75 hover:text-[var(--color-cyan)] transition-colors">Início</a></li>
+          <li><a href="/sobre-nos" class="text-white/75 hover:text-[var(--color-cyan)] transition-colors">Sobre Nós</a></li>
+          <li><a href="/servicos" class="text-white/75 hover:text-[var(--color-cyan)] transition-colors">Serviços</a></li>
+          <li><a href="/contato" class="text-white/75 hover:text-[var(--color-cyan)] transition-colors">Contato</a></li>
         </ul>
       </div>
       <div>
-        <h3 class="text-[var(--color-platinum)] font-semibold mb-4">Connect</h3>
-        <ul class="space-y-2">
-          <li><a href="mailto:contact@axory.dev" class="text-[var(--color-platinum)]/70 hover:text-[var(--color-bondi-blue)] transition-colors">Contact</a></li>
-          <li class="flex gap-4 mt-4">
-            <a href="#" class="text-[var(--color-platinum)]/70 hover:text-[var(--color-bondi-blue)] transition-colors" aria-label="LinkedIn">
-              <i class="fab fa-linkedin text-xl"></i>
-            </a>
-            <a href="#" class="text-[var(--color-platinum)]/70 hover:text-[var(--color-bondi-blue)] transition-colors" aria-label="Twitter">
-              <i class="fab fa-twitter text-xl"></i>
-            </a>
-            <a href="#" class="text-[var(--color-platinum)]/70 hover:text-[var(--color-bondi-blue)] transition-colors" aria-label="GitHub">
-              <i class="fab fa-github text-xl"></i>
+        <h3 class="text-white font-semibold mb-4">Informações</h3>
+        <ul class="space-y-3 text-white/75">
+          <li>Endereço: {CONTACT.address}</li>
+          <li>CEP: {CONTACT.cep}</li>
+          <li><a href={`mailto:${CONTACT.email}`} class="hover:text-[var(--color-cyan)] transition-colors">{CONTACT.email}</a></li>
+          <li><a href={`tel:+55${CONTACT.phone.replace(/\D/g, '')}`} class="hover:text-[var(--color-cyan)] transition-colors">{CONTACT.phone}</a></li>
+          <li>
+            <a href={`https://wa.me/${CONTACT.whatsapp}`} target="_blank" rel="noopener noreferrer" class="hover:text-[var(--color-cyan)] transition-colors inline-flex items-center gap-2">
+              <i class="fab fa-whatsapp"></i> WhatsApp
             </a>
           </li>
         </ul>
       </div>
     </div>
-    <div class="mt-8 pt-8 border-t border-[var(--color-platinum)]/10 text-center text-[var(--color-platinum)]/50 text-sm">
-      <p>&copy; {new Date().getFullYear()} Axory Studio. All rights reserved.</p>
+    <div class="mt-10 pt-8 border-t border-white/10 text-center text-white/50 text-sm">
+      <p>© {currentYear} RN Transportes. Todos os direitos reservados.</p>
     </div>
   </div>
 </footer>
-
-<script>
-  function updateFooterLogo() {
-    const logo = document.getElementById('footer-logo');
-    if (logo) {
-      const theme = document.documentElement.getAttribute('data-theme') || 'dark';
-      logo.setAttribute('variant', theme === 'light' ? 'mono-dark' : 'mono-light');
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    updateFooterLogo();
-    
-    // Observa mudanças no atributo data-theme
-    const observer = new MutationObserver(() => {
-      updateFooterLogo();
-    });
-    
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['data-theme']
-    });
-  });
-</script>

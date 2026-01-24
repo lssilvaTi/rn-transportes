@@ -1,22 +1,156 @@
 ---
 import Button from '../ui/Button.astro';
+
+const carouselImages = [
+  '/assets/carousel/carousel-1.png',
+  '/assets/carousel/carousel-2.png',
+  '/assets/carousel/carousel-3.png',
+  '/assets/carousel/carousel-4.png',
+];
 ---
 
-<section class="min-h-screen flex items-center justify-center pt-20 bg-gradient-to-br from-[var(--color-background-dark)] via-[var(--color-background)] to-[var(--color-indigo-velvet)]/20">
-  <div class="container mx-auto px-6 text-center">
-    <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight pb-2 bg-gradient-to-r from-[var(--color-platinum)] via-[var(--color-bondi-blue)] to-[var(--color-platinum)] bg-clip-text text-transparent">
-      Crafting Digital Excellence
-    </h1>
-    <p class="text-xl md:text-2xl text-[var(--color-platinum)]/80 mb-8 max-w-2xl mx-auto">
-      Premium web development studio specializing in sophisticated, high-performance websites that deliver exceptional experiences.
-    </p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <Button href="#pricing" variant="primary" size="lg">
-        View Plans
-      </Button>
-      <Button href="#process" variant="outline" size="lg">
-        Learn More
-      </Button>
+<section class="hero-transport grid grid-cols-1 lg:grid-cols-2 min-h-[85vh]">
+  <!-- Coluna esquerda: gradiente + formas + textos -->
+  <div class="hero-left relative flex items-center justify-center pt-24 pb-12 lg:pb-16 px-6 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div class="absolute top-[15%] right-[8%] w-14 h-14 md:w-16 md:h-16 bg-[var(--color-yellow)] opacity-90 rotate-12"></div>
+      <div class="absolute top-[38%] left-[5%] w-10 h-20 md:w-12 md:h-24 bg-[var(--color-cyan)] opacity-80 -rotate-6"></div>
+      <div class="absolute bottom-[28%] right-[10%] w-16 h-10 md:w-20 md:h-12 bg-[var(--color-yellow)] opacity-85 -rotate-12"></div>
+      <div class="absolute bottom-[38%] left-[8%] w-8 h-8 md:w-10 md:h-10 bg-[var(--color-cyan)] opacity-70"></div>
+      <div class="absolute top-[58%] right-[20%] w-6 h-12 md:w-8 md:h-14 bg-[var(--color-yellow)] opacity-75 rotate-45"></div>
+    </div>
+    <div class="relative z-10 text-center max-w-xl mx-auto">
+      <h1 class="hero-title text-4xl sm:text-5xl md:text-6xl font-extrabold mb-5 leading-snug tracking-wide text-white">
+        Transporte e mudanças para todo o Brasil
+      </h1>
+      <p class="text-lg md:text-xl text-white/95 mb-5 max-w-lg mx-auto leading-relaxed">
+        Segurança e eficiência para sua mudança com excelência garantida. Confie na nossa experiência e dedicação.
+      </p>
+      <p class="text-base md:text-lg text-white/80 mb-8 max-w-md mx-auto">
+        Entre em contato e transforme sua experiência hoje mesmo!
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <Button href="#contact" variant="primary" size="lg">Fale conosco</Button>
+        <Button href="/orcamento" variant="outline" size="lg" class="!text-white !border-white/80 hover:!bg-white/10">Solicitar orçamento</Button>
+      </div>
+      <p class="mt-5">
+        <a href="/#services" class="text-[var(--color-yellow)] hover:underline inline-flex items-center gap-2 font-medium">
+          Nossos serviços <i class="fas fa-arrow-down text-sm"></i>
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Coluna direita: quadradinhos de referência + carrossel (proporção mantida) + formas acima/abaixo -->
+  <div class="hero-right relative flex flex-col items-start justify-center py-10 lg:py-12 pl-6 pr-6 order-first lg:order-none">
+    <!-- Formas: amarelo mais acima, amarelo mais abaixo, e outras para ornar -->
+    <div class="hero-right-shapes absolute inset-0 pointer-events-none" aria-hidden="true">
+      <!-- Amarelo mais acima (referência: carrossel começa a partir daqui) -->
+      <div class="absolute top-[10%] left-[2%] w-11 h-11 md:w-14 md:h-14 bg-[var(--color-yellow)] opacity-90 rotate-6"></div>
+      <div class="absolute top-[8%] right-[6%] w-8 h-14 md:w-10 md:h-16 bg-[var(--color-cyan)] opacity-75 -rotate-3"></div>
+      <div class="absolute top-[18%] right-[2%] w-10 h-10 md:w-12 md:h-12 bg-[var(--color-yellow)] opacity-80"></div>
+      <!-- Amarelo mais abaixo (referência: carrossel termina antes daqui) -->
+      <div class="absolute bottom-[10%] right-[3%] w-12 h-12 md:w-14 md:h-14 bg-[var(--color-yellow)] opacity-90 -rotate-6"></div>
+      <div class="absolute bottom-[8%] left-[4%] w-10 h-8 md:w-12 md:h-10 bg-[var(--color-cyan)] opacity-75 rotate-12"></div>
+      <div class="absolute bottom-[20%] left-[1%] w-9 h-9 md:w-11 md:h-11 bg-[var(--color-yellow)] opacity-85"></div>
+    </div>
+
+    <!-- Carrossel: menor em altura, proporção 4:3, começa à esquerda e segue para a direita -->
+    <div class="hero-carousel-wrap relative w-[88%] lg:w-[78%] aspect-[4/3]">
+      <div class="hero-carousel absolute inset-0 rounded-lg overflow-hidden">
+        {carouselImages.map((src, i) => (
+          <div
+            class={`hero-carousel-slide ${i === 0 ? 'active' : ''}`}
+            style={`background-image: url('${src}')`}
+            data-slide={i}
+          />
+        ))}
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  /* Fundo único em toda a seção – sem linha entre os lados */
+  .hero-transport {
+    background: linear-gradient(135deg, #1f3e8f 0%, #00a7e0 45%, #1f3e8f 100%);
+  }
+  [data-theme="light"] .hero-transport {
+    background: linear-gradient(135deg, #1f3e8f 0%, #00a7e0 50%, #0d4d6d 100%);
+  }
+
+  .hero-left,
+  .hero-right {
+    background: none;
+  }
+
+  .hero-carousel-wrap {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-carousel {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero-carousel-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .hero-carousel-slide.active {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .hero-title {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  @media (max-width: 1023px) {
+    .hero-transport {
+      display: flex;
+      flex-direction: column;
+    }
+    .hero-right.order-first {
+      order: -1;
+      min-height: 0;
+      padding-top: 4rem;
+      padding-bottom: 0.25rem;
+      align-items: center;
+    }
+    .hero-right .hero-carousel-wrap {
+      width: 90%;
+      max-width: 380px;
+      margin: 0 auto;
+    }
+    .hero-left {
+      min-height: auto;
+      padding-top: 0.5rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const SLIDE_INTERVAL = 5000;
+    const slides = document.querySelectorAll('.hero-carousel-slide');
+    if (slides.length < 2) return;
+    let current = 0;
+    function goToNext() {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }
+    const timer = setInterval(goToNext, SLIDE_INTERVAL);
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) clearInterval(timer);
+    });
+  });
+</script>
