@@ -15,6 +15,7 @@ interface Props {
   keywords?: string;
   canonical?: string;
   noindex?: boolean;
+  loadTurnstile?: boolean;
 }
 
 const { 
@@ -25,7 +26,8 @@ const {
   type,
   keywords,
   canonical,
-  noindex = false
+  noindex = false,
+  loadTurnstile = false
 } = Astro.props;
 ---
 
@@ -47,6 +49,9 @@ const {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600&family=Inter:wght@400&display=swap" rel="stylesheet">
+    {loadTurnstile && (
+      <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    )}
   </head>
   <body>
     <Header />

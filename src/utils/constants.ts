@@ -81,11 +81,10 @@ export const PROCESS_STEPS = [
 // Contato e redes sociais
 export const CONTACT = {
   phone: '(31) 3454-9283',
-  whatsapp: '5531988435877',
+  whatsapp: '5531988457516',
   email: 'contato@rntransportesbh.com.br',
   address: 'Rua Nigéria, 78, Loja B - Canaã, Belo Horizonte/MG',
   cep: '31749-045',
-  // Atualize com os links reais das páginas:
-  facebook: '#',
-  instagram: '#',
+  facebook: 'https://www.facebook.com/rntransportesemudancasbh',
+  instagram: 'https://www.instagram.com/rntransportesbh/',
 } as const;

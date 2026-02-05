@@ -1,5 +1,5 @@
 ---
-import { PROCESS_STEPS } from '../../utils/constants';
+import { PROCESS_STEPS, CONTACT } from '../../utils/constants';
 ---
 
 <section id="process" class="relative py-20 md:py-24 bg-[var(--color-background-dark)]">
@@ -34,7 +34,7 @@ import { PROCESS_STEPS } from '../../utils/constants';
       </div>
     </div>
     <p class="mt-12 text-center text-[var(--color-platinum)]/80">
-      Dúvidas? Fale conosco pelo <a href="https://wa.me/5531988435877" target="_blank" rel="noopener noreferrer" class="text-[var(--color-cyan)] hover:underline font-medium">WhatsApp</a> ou solicite um orçamento.
+      Dúvidas? Fale conosco pelo <a href={`https://wa.me/${CONTACT.whatsapp}`} target="_blank" rel="noopener noreferrer" class="text-[var(--color-cyan)] hover:underline font-medium">WhatsApp</a> ou solicite um orçamento.
     </p>
   </div>
 </section>

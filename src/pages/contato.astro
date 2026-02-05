@@ -4,6 +4,7 @@ import Button from '../components/ui/Button.astro';
 import { CONTACT } from '../utils/constants';
 
 const mapsEmbedUrl = 'https://www.google.com/maps?q=' + encodeURIComponent(CONTACT.address) + '&output=embed';
+const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
 ---
 
 <BaseLayout
@@ -13,6 +14,7 @@ const mapsEmbedUrl = 'https://www.google.com/maps?q=' + encodeURIComponent(CONTA
   canonical="https://rntransportesbh.com.br/contato"
   image="/banner-og.png"
   url="https://rntransportesbh.com.br/contato"
+  loadTurnstile={!!TURNSTILE_SITE_KEY}
 >
   <!-- 1. Primeira sessão: imagem de fundo (mulher apontando) + título integrado ao formulário -->
   <section
@@ -37,6 +39,11 @@ const mapsEmbedUrl = 'https://www.google.com/maps?q=' + encodeURIComponent(CONTA
             Preencha o formulário que entraremos em contato com você.
           </p>
           <form id="contato-form" class="space-y-4">
+            <!-- Honeypot: invisível para usuários, preenchido por bots -->
+            <div class="absolute -left-[9999px] w-px h-px overflow-hidden opacity-0" aria-hidden="true">
+              <input type="text" name="company_website" autocomplete="off" tabindex="-1" />
+            </div>
+
             <div>
               <label for="contato-name" class="block text-[var(--color-platinum)] mb-1.5 text-sm font-medium">
                 Nome completo <span class="text-red-400">*</span>
@@ -101,8 +108,13 @@ const mapsEmbedUrl = 'https://www.google.com/maps?q=' + encodeURIComponent(CONTA
                 rows="3"
                 class="w-full px-4 py-2.5 bg-[var(--color-background)] border border-[var(--color-platinum)]/25 rounded-lg text-[var(--color-platinum)] focus:outline-none focus:ring-2 focus:ring-[var(--color-cyan)] focus:border-transparent resize-none text-sm"
                 placeholder="Como podemos ajudar?"
-              ></textarea>
+              >              </textarea>
             </div>
+
+            {TURNSTILE_SITE_KEY && (
+              <div class="cf-turnstile" data-sitekey={TURNSTILE_SITE_KEY} id="turnstile-contato"></div>
+            )}
+
             <div id="contato-form-message" class="hidden p-3 rounded-lg text-sm"></div>
             <Button variant="primary" size="lg" class="w-full" type="submit">
               Enviar
@@ -214,10 +226,12 @@ const mapsEmbedUrl = 'https://www.google.com/maps?q=' + encodeURIComponent(CONTA
 
 <script>
   import emailjs from '@emailjs/browser';
+  import { CONTACT } from '../utils/constants';
 
   const EMAILJS_SERVICE_ID = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID || '';
   const EMAILJS_TEMPLATE_ID = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID || '';
   const EMAILJS_PUBLIC_KEY = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY || '';
+  const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
 
   if (EMAILJS_PUBLIC_KEY) {
     emailjs.init(EMAILJS_PUBLIC_KEY);
@@ -235,10 +249,28 @@ const mapsEmbedUrl = 'https://www.google.com/maps?q=' + encodeURIComponent(CONTA
       if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
         if (messageDiv) {
           messageDiv.className = 'p-4 rounded-lg bg-amber-500/20 border border-amber-500/50 text-amber-200';
-          messageDiv.innerHTML = 'Formulário não configurado. Envie sua mensagem pelo <a href="https://wa.me/5531988435877" target="_blank" rel="noopener" class="underline">WhatsApp</a>.';
+          messageDiv.innerHTML = `Formulário não configurado. Envie sua mensagem pelo <a href="https://wa.me/${CONTACT.whatsapp}" target="_blank" rel="noopener" class="underline">WhatsApp</a>.`;
           messageDiv.classList.remove('hidden');
         }
         return;
+      }
+
+      const formData = new FormData(form);
+
+      // Honeypot: se preenchido, é bot — não envia (retorna em silêncio)
+      if (formData.get('company_website')) return;
+
+      // Turnstile: exige verificação quando a chave está configurada
+      if (TURNSTILE_SITE_KEY) {
+        const turnstileResponse = (form.querySelector('[name="cf-turnstile-response"]') as HTMLInputElement | HTMLTextAreaElement)?.value;
+        if (!turnstileResponse || !turnstileResponse.trim()) {
+          if (messageDiv) {
+            messageDiv.className = 'p-4 rounded-lg bg-amber-500/20 border border-amber-500/50 text-amber-200';
+            messageDiv.textContent = 'Complete a verificação antes de enviar.';
+            messageDiv.classList.remove('hidden');
+          }
+          return;
+        }
       }
 
       if (submitButton) {
@@ -248,14 +280,13 @@ const mapsEmbedUrl = 'https://www.google.com/maps?q=' + encodeURIComponent(CONTA
       if (messageDiv) messageDiv.classList.add('hidden');
 
       try {
-        const formData = new FormData(form);
         const templateParams = {
           from_name: formData.get('name'),
           from_address: formData.get('address') || '',
           from_phone: formData.get('phone'),
           from_email: formData.get('email'),
           message: formData.get('message'),
-          to_email: 'tilssilva1103@gmail.com',
+          to_email: CONTACT.email,
         };
 
         await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
@@ -266,11 +297,16 @@ const mapsEmbedUrl = 'https://www.google.com/maps?q=' + encodeURIComponent(CONTA
           messageDiv.classList.remove('hidden');
         }
         form.reset();
+
+        // Resetar Turnstile para permitir novo envio
+        if (TURNSTILE_SITE_KEY && typeof window !== 'undefined' && (window as any).turnstile) {
+          try { (window as any).turnstile.reset(); } catch (_) {}
+        }
       } catch (err) {
         console.error('EmailJS error:', err);
         if (messageDiv) {
           messageDiv.className = 'p-4 rounded-lg bg-red-500/20 border border-red-500/50 text-red-300';
-          messageDiv.innerHTML = '<i class="fas fa-exclamation-circle mr-2"></i>Erro ao enviar. Tente pelo <a href="https://wa.me/5531988435877" target="_blank" rel="noopener" class="underline">WhatsApp</a>.';
+          messageDiv.innerHTML = `<i class="fas fa-exclamation-circle mr-2"></i>Erro ao enviar. Tente pelo <a href="https://wa.me/${CONTACT.whatsapp}" target="_blank" rel="noopener" class="underline">WhatsApp</a>.`;
           messageDiv.classList.remove('hidden');
         }
       } finally {
