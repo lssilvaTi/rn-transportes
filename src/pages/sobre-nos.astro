@@ -22,39 +22,32 @@ const diferenciais = [
   image="/banner-og.png"
   url="https://rntransportesbh.com.br/sobre-nos"
 >
-  <!-- 1. Bloco de abertura: título, textos e imagem do caminhão -->
-  <section class="relative pt-24 pb-16 md:pt-28 md:pb-20 lg:py-24 bg-gradient-to-br from-[var(--color-dark-blue)]/25 via-[var(--color-background)] to-[var(--color-cyan)]/20">
+  <!-- 1. Primeira seção: imagem de fundo (caminhão) – padrão contato -->
+  <section
+    class="relative pt-24 pb-16 md:pt-28 md:pb-20 min-h-[640px] md:min-h-[720px] flex items-center bg-cover bg-no-repeat bg-center"
+    style="background-image: url('/assets/sobre/caminhao.png');"
+  >
+    <div class="absolute inset-0 bg-gradient-to-r from-[var(--color-dark-blue)]/96 via-[var(--color-dark-blue)]/85 to-[var(--color-dark-blue)]/50" aria-hidden="true"></div>
     <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
-      <div class="absolute left-[2%] top-[18%] w-7 h-7 bg-[var(--color-yellow)] opacity-60 rotate-12"></div>
-      <div class="absolute left-[1.5%] bottom-[22%] w-6 h-10 bg-[var(--color-cyan)] opacity-55 -rotate-6"></div>
-      <div class="absolute right-[2%] top-[28%] w-6 h-6 bg-[var(--color-cyan)] opacity-60 -rotate-12"></div>
-      <div class="absolute right-[1.5%] bottom-[18%] w-8 h-6 bg-[var(--color-yellow)] opacity-65 rotate-6"></div>
+      <div class="absolute left-[2%] top-[18%] w-7 h-7 bg-[var(--color-yellow)] opacity-50 rotate-12"></div>
+      <div class="absolute left-[1.5%] bottom-[22%] w-6 h-10 bg-[var(--color-cyan)] opacity-45 -rotate-6"></div>
+      <div class="absolute right-[2%] top-[28%] w-6 h-6 bg-[var(--color-cyan)] opacity-50 -rotate-12"></div>
+      <div class="absolute right-[1.5%] bottom-[18%] w-8 h-6 bg-[var(--color-yellow)] opacity-55 rotate-6"></div>
     </div>
     <div class="container relative z-10 mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center max-w-6xl mx-auto">
-        <div>
-          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[var(--color-platinum)]">
-            Para nós, cada projeto é individual e personalizado.
-          </h1>
-          <p class="text-lg md:text-xl text-[var(--color-cyan)] font-medium mb-5">
-            Oferecemos tradição, qualidade e segurança para sua mudança!
-          </p>
-          <p class="text-[var(--color-platinum)]/80 text-base md:text-lg leading-relaxed mb-5">
-            Com uma frota própria de caminhões baú, profissionais qualificados e especializados no ramo de mudanças residenciais, comerciais, industriais e guarda-móveis, somos a melhor empresa de Belo Horizonte no ramo de transportes.
-          </p>
-          <p class="text-[var(--color-platinum)]/75 text-base md:text-lg">
-            Para nós, cada projeto é individual e personalizado.
-          </p>
-        </div>
-        <div class="relative flex justify-center lg:justify-end">
-          <img
-            src="/assets/sobre/caminhao.png"
-            alt="Caminhão RN Transportes e Mudanças em condomínio"
-            class="rounded-lg shadow-xl w-full max-w-lg object-cover aspect-[4/3]"
-            width="600"
-            height="450"
-          />
-        </div>
+      <div class="max-w-2xl hero-text-contrast">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
+          Para nós, cada projeto é individual e personalizado.
+        </h1>
+        <p class="text-lg md:text-xl text-[var(--color-cyan)] font-medium mb-5 text-drop-shadow">
+          Oferecemos tradição, qualidade e segurança para sua mudança!
+        </p>
+        <p class="text-white/95 text-base md:text-lg leading-relaxed mb-5 text-drop-shadow">
+          Com uma frota própria de caminhões baú, profissionais qualificados e especializados no ramo de mudanças residenciais, comerciais, industriais e guarda-móveis, somos a melhor empresa de Belo Horizonte no ramo de transportes.
+        </p>
+        <p class="text-white/90 text-base md:text-lg text-drop-shadow">
+          Para nós, cada projeto é individual e personalizado.
+        </p>
       </div>
     </div>
   </section>

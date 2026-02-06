@@ -1,0 +1,117 @@
+---
+// Números em destaque – identidade RN Transportes (cards, gradiente, ícones)
+const stats = [
+  { value: 20, suffix: '+', label: 'Anos de Tradição', icon: 'fa-truck' },
+  { value: 150000, suffix: '+', label: 'Mudanças Realizadas', icon: 'fa-boxes-stacked' },
+  { value: 2500, suffix: '+', label: 'Cidades Atendidas', icon: 'fa-route' },
+  { value: 95, suffix: '%', label: 'Clientes Satisfeitos', icon: 'fa-star' },
+];
+---
+
+<section class="stats-bar relative py-10 md:py-14 overflow-hidden bg-[var(--color-background)]" aria-label="Números da RN Transportes">
+  <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
+    <div class="absolute left-[2%] top-[20%] w-6 h-6 bg-[var(--color-yellow)] opacity-50 rotate-12"></div>
+    <div class="absolute left-[4%] bottom-[25%] w-6 h-10 bg-[var(--color-cyan)] opacity-40 -rotate-6"></div>
+    <div class="absolute right-[2%] top-[30%] w-8 h-8 bg-[var(--color-cyan)] opacity-45 -rotate-12"></div>
+    <div class="absolute right-[3%] bottom-[20%] w-7 h-7 bg-[var(--color-yellow)] opacity-50 rotate-6"></div>
+  </div>
+
+  <div class="container relative z-10 mx-auto px-6">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 max-w-4xl mx-auto">
+      {stats.map((stat) => (
+        <div
+          class="stats-item group rounded-lg bg-[var(--color-background-dark)] border border-[var(--color-platinum)]/15 hover:border-[var(--color-cyan)]/35 p-4 md:p-5 text-center transition-all duration-300"
+          data-value={stat.value}
+          data-suffix={stat.suffix}
+          data-duration="1500"
+        >
+          <div class="inline-flex w-9 h-9 rounded-md bg-[var(--color-cyan)]/15 text-[var(--color-cyan)] items-center justify-center mb-2.5 group-hover:bg-[var(--color-cyan)]/25 transition-colors">
+            <i class={`fas ${stat.icon} text-sm`} aria-hidden="true"></i>
+          </div>
+          <div
+            class="stats-number text-2xl sm:text-3xl md:text-4xl font-extrabold text-[var(--color-cyan)] tabular-nums tracking-tight"
+            data-target={stat.value}
+            data-suffix={stat.suffix}
+          >
+            0{stat.suffix}
+          </div>
+          <div class="stats-label mt-1.5 text-[var(--color-platinum)]/85 text-xs sm:text-sm font-medium">
+            {stat.label}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .stats-bar {
+    position: relative;
+    background-color: var(--color-background);
+  }
+
+  /* Fundo que conversa com o hero: leve gradiente azul → ciano, minimalista */
+  .stats-bar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(31, 62, 143, 0.45) 0%,
+        rgba(0, 167, 224, 0.20) 40%,
+        rgba(0, 167, 224, 0.04) 75%,
+        transparent 100%
+      );
+    pointer-events: none;
+    z-index: 0;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const items = document.querySelectorAll('.stats-item');
+    if (!items.length) return;
+
+    const formatNumber = (n: number, suffix: string): string => {
+      if (suffix === '%') return Math.round(n) + '%';
+      if (n >= 1000) return Math.round(n).toLocaleString('pt-BR') + suffix;
+      return Math.round(n) + suffix;
+    };
+
+    const easeOutQuart = (t: number): number => 1 - Math.pow(1 - t, 4);
+
+    const animateValue = (el: Element, target: number, suffix: string, duration: number) => {
+      const numEl = el.querySelector('.stats-number');
+      if (!numEl) return;
+      const start = performance.now();
+
+      const step = (now: number) => {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = easeOutQuart(progress);
+        const current = target * eased;
+        numEl.textContent = formatNumber(current, suffix);
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const item = entry.target as HTMLElement;
+          const target = Number(item.dataset.value);
+          const suffix = item.dataset.suffix || '';
+          const duration = Number(item.dataset.duration) || 1500;
+          animateValue(item, target, suffix, duration);
+          observer.unobserve(item);
+        });
+      },
+      { threshold: 0.25, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    items.forEach((el) => observer.observe(el));
+  });
+</script>

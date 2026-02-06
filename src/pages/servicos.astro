@@ -42,36 +42,29 @@ const servicos = [
   image="/banner-og.png"
   url="https://rntransportesbh.com.br/servicos"
 >
-  <!-- 1. Hero: Conheça nossos serviços -->
-  <section class="relative pt-24 pb-16 md:pt-28 md:pb-20 lg:py-24 bg-gradient-to-br from-[var(--color-dark-blue)]/25 via-[var(--color-background)] to-[var(--color-cyan)]/20">
+  <!-- 1. Primeira seção: imagem de fundo (hero-servicos) – padrão contato -->
+  <section
+    class="relative pt-24 pb-16 md:pt-28 md:pb-20 min-h-[640px] md:min-h-[720px] flex items-center bg-cover bg-no-repeat bg-center"
+    style="background-image: url('/assets/servicos/hero-servicos.png');"
+  >
+    <div class="absolute inset-0 bg-gradient-to-r from-[var(--color-dark-blue)]/96 via-[var(--color-dark-blue)]/85 to-[var(--color-dark-blue)]/50" aria-hidden="true"></div>
     <div class="section-shapes absolute inset-0 pointer-events-none hidden md:block z-0" aria-hidden="true">
-      <div class="absolute left-[2%] top-[18%] w-7 h-7 bg-[var(--color-yellow)] opacity-60 rotate-12"></div>
-      <div class="absolute left-[1.5%] bottom-[22%] w-6 h-10 bg-[var(--color-cyan)] opacity-55 -rotate-6"></div>
-      <div class="absolute right-[2%] top-[28%] w-6 h-6 bg-[var(--color-cyan)] opacity-60 -rotate-12"></div>
-      <div class="absolute right-[1.5%] bottom-[18%] w-8 h-6 bg-[var(--color-yellow)] opacity-65 rotate-6"></div>
+      <div class="absolute left-[2%] top-[18%] w-7 h-7 bg-[var(--color-yellow)] opacity-50 rotate-12"></div>
+      <div class="absolute left-[1.5%] bottom-[22%] w-6 h-10 bg-[var(--color-cyan)] opacity-45 -rotate-6"></div>
+      <div class="absolute right-[2%] top-[28%] w-6 h-6 bg-[var(--color-cyan)] opacity-50 -rotate-12"></div>
+      <div class="absolute right-[1.5%] bottom-[18%] w-8 h-6 bg-[var(--color-yellow)] opacity-55 rotate-6"></div>
     </div>
     <div class="container relative z-10 mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center max-w-6xl mx-auto">
-        <div class="order-2 lg:order-1">
-          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[var(--color-platinum)]">
-            Conheça nossos serviços
-          </h1>
-          <p class="text-[var(--color-platinum)]/80 text-base md:text-lg leading-relaxed mb-8">
-            Mudanças residenciais, comerciais, interestaduais, aproveitamento de carga e transporte de veículos. Tudo com a qualidade e segurança que você merece.
-          </p>
-          <Button href="/orcamento" variant="primary" size="lg">
-            Quero um orçamento
-          </Button>
-        </div>
-        <div class="relative flex justify-center lg:justify-end order-1 lg:order-2">
-          <img
-            src="/assets/servicos/hero-servicos.png"
-            alt="Profissional da RN Transportes ao lado do caminhão"
-            class="rounded-lg shadow-xl w-full max-w-lg object-cover aspect-[4/3]"
-            width="600"
-            height="450"
-          />
-        </div>
+      <div class="max-w-2xl hero-text-contrast">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white text-drop-shadow">
+          Conheça nossos serviços
+        </h1>
+        <p class="text-white/95 text-base md:text-lg leading-relaxed mb-8 text-drop-shadow">
+          Mudanças residenciais, comerciais, interestaduais, aproveitamento de carga e transporte de veículos. Tudo com a qualidade e segurança que você merece.
+        </p>
+        <Button href="/orcamento" variant="secondary" size="lg">
+          Quero um orçamento
+        </Button>
       </div>
     </div>
   </section>
@@ -128,13 +121,15 @@ const servicos = [
         <p class="text-xl md:text-2xl text-[var(--color-platinum)]/90 font-medium mb-10">
           Todas as nossas cargas são seguradas pela Porto Seguro.
         </p>
-        <img
-          src="/assets/servicos/porto-seguro-logo.png"
-          alt="Porto Seguro"
-          class="inline-block w-32 h-32 md:w-40 md:h-40 object-contain opacity-90"
-          width="160"
-          height="160"
-        />
+        <div class="porto-seguro-logo-wrap inline-block p-2 md:p-3 rounded-xl">
+          <img
+            src="/assets/servicos/porto-seguro-logo.png"
+            alt="Porto Seguro"
+            class="inline-block w-32 h-32 md:w-40 md:h-40 object-contain opacity-90"
+            width="160"
+            height="160"
+          />
+        </div>
       </div>
     </div>
   </section>
