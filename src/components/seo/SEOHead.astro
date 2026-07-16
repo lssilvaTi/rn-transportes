@@ -25,9 +25,9 @@ const {
   canonical,
 } = Astro.props;
 
-const siteUrl = url;
-const pageUrl = canonical || siteUrl + Astro.url.pathname;
-const ogImage = image.startsWith('http') ? image : siteUrl + image;
+const siteUrl = new URL(url).origin;
+const pageUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString();
+const ogImage = image.startsWith('http') ? image : new URL(image, siteUrl).toString();
 ---
 
 <!-- Primary Meta Tags -->
