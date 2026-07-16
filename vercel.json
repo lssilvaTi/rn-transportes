@@ -1,6 +1,21 @@
 {
   "framework": "astro",
   "redirects": [
+    { "source": "/banner-og.png", "destination": "/banner-og.webp", "permanent": true },
+    { "source": "/assets/carousel/carousel-1.png", "destination": "/assets/carousel/carousel-1.webp", "permanent": true },
+    { "source": "/assets/carousel/carousel-2.png", "destination": "/assets/carousel/carousel-2.webp", "permanent": true },
+    { "source": "/assets/carousel/carousel-3.png", "destination": "/assets/carousel/carousel-3.webp", "permanent": true },
+    { "source": "/assets/carousel/carousel-4.png", "destination": "/assets/carousel/carousel-4.webp", "permanent": true },
+    { "source": "/assets/contato/hero-contato.png", "destination": "/assets/contato/hero-contato.webp", "permanent": true },
+    { "source": "/assets/logos/logo-rn-transportes.png", "destination": "/assets/logos/logo-rn-transportes.webp", "permanent": true },
+    { "source": "/assets/servicos/aproveitamento-de-carga.png", "destination": "/assets/servicos/aproveitamento-de-carga.webp", "permanent": true },
+    { "source": "/assets/servicos/hero-servicos.png", "destination": "/assets/servicos/hero-servicos.webp", "permanent": true },
+    { "source": "/assets/servicos/mudanca-interestadual.png", "destination": "/assets/servicos/mudanca-interestadual.webp", "permanent": true },
+    { "source": "/assets/servicos/mudanca-residencial.png", "destination": "/assets/servicos/mudanca-residencial.webp", "permanent": true },
+    { "source": "/assets/servicos/porto-seguro-logo.png", "destination": "/assets/servicos/porto-seguro-logo.webp", "permanent": true },
+    { "source": "/assets/servicos/transporte-veiculos.png", "destination": "/assets/servicos/transporte-veiculos.webp", "permanent": true },
+    { "source": "/assets/sobre/caminhao.png", "destination": "/assets/sobre/caminhao.webp", "permanent": true },
+    { "source": "/assets/sobre/raimundo-nonato.png", "destination": "/assets/sobre/raimundo-nonato.webp", "permanent": true },
     { "source": "/form", "destination": "/orcamento", "permanent": true }
   ]
 }

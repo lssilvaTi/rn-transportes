@@ -16,7 +16,7 @@ interface Props {
 const {
   title,
   description,
-  image = '/banner-og.png',
+  image = '/banner-og.webp',
   url = 'https://rntransportesbh.com.br',
   type = 'website',
   keywords = 'mudanças BH, transporte de mudanças, mudanças interestaduais, mudanças comerciais, mudanças residenciais, RN Transportes, Belo Horizonte',
@@ -52,7 +52,7 @@ const ogImage = image.startsWith('http') ? image : siteUrl + image;
 <meta property="og:description" content={description} />
 <meta property="og:image" content={ogImage} />
 <meta property="og:image:secure_url" content={ogImage} />
-<meta property="og:image:type" content="image/png" />
+<meta property="og:image:type" content="image/webp" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="RN Transportes e Mudanças" />
