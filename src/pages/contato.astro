@@ -227,6 +227,7 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
 <script>
   import emailjs from '@emailjs/browser';
   import { CONTACT } from '../utils/constants';
+  import { createKeepControlLead } from '../utils/keepcontrol';
 
   const EMAILJS_SERVICE_ID = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID || '';
   const EMAILJS_TEMPLATE_ID = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID || '';
@@ -326,6 +327,12 @@ const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
 
       try {
         await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+
+        // O e-mail é a fonte de verdade. O KeepControl é complementar e sua
+        // indisponibilidade não transforma um e-mail enviado em falha.
+        void createKeepControlLead(formData).catch((leadError) => {
+          console.error('KeepControl lead error:', leadError);
+        });
 
         if (messageDiv) {
           messageDiv.className =
