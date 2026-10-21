@@ -80,7 +80,7 @@ export const PROCESS_STEPS = [
 
 // Contato e redes sociais
 export const CONTACT = {
-  phone: '(31) 98236-8089',
+  phone: '(31) 3454-9283',
   whatsapp: '5531982368089',
   email: 'contato@rntransportesbh.com.br',
   address: 'Rua Nigéria, 78, Loja B - Canaã, Belo Horizonte/MG',
